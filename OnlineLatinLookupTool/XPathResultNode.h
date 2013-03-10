@@ -5,7 +5,7 @@
 //  Created by Matt Gallagher on 2011/05/20.
 //  Copyright 2011 Matt Gallagher. All rights reserved.
 //  MINOR ALTERATIONS MADE 2013 Scot Mcphee:
-//    a. changed to use ARC
+//    a. changed to use ARC, which is to say I removed use of 'retain' and 'dealloc' etc.
 //
 //  This software is provided 'as-is', without any express or implied
 //  warranty. In no event will the authors be held liable for any damages

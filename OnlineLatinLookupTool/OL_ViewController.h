@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OL_LatinMorphData.h"
 
 @interface OL_ViewController : UIViewController
+
+-(void)refreshViewData:(OL_LatinMorphData *)latinMorph;
+
 
 @end
