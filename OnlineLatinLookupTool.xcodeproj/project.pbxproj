@@ -26,6 +26,8 @@
 		655BB4CC16EC651300E2C91D /* XPathResultNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB4CB16EC651300E2C91D /* XPathResultNode.m */; };
 		655BB4CF16EC659200E2C91D /* OL_LatinMorphData.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB4CE16EC659200E2C91D /* OL_LatinMorphData.m */; };
 		655BB4D116EC65B300E2C91D /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BB4D016EC65B300E2C91D /* libxml2.dylib */; };
+		655BB4D416EC747C00E2C91D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB4D316EC747C00E2C91D /* Reachability.m */; };
+		655BB4D616EC74AC00E2C91D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BB4D516EC74AC00E2C91D /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,9 @@
 		655BB4CD16EC659200E2C91D /* OL_LatinMorphData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OL_LatinMorphData.h; sourceTree = "<group>"; };
 		655BB4CE16EC659200E2C91D /* OL_LatinMorphData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OL_LatinMorphData.m; sourceTree = "<group>"; };
 		655BB4D016EC65B300E2C91D /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		655BB4D216EC747C00E2C91D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		655BB4D316EC747C00E2C91D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		655BB4D516EC74AC00E2C91D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				655BB4D616EC74AC00E2C91D /* SystemConfiguration.framework in Frameworks */,
 				655BB4D116EC65B300E2C91D /* libxml2.dylib in Frameworks */,
 				655BB49016EC64CE00E2C91D /* UIKit.framework in Frameworks */,
 				655BB49216EC64CE00E2C91D /* Foundation.framework in Frameworks */,
@@ -96,6 +102,7 @@
 		655BB48316EC64CE00E2C91D = {
 			isa = PBXGroup;
 			children = (
+				655BB4D516EC74AC00E2C91D /* SystemConfiguration.framework */,
 				655BB4D016EC65B300E2C91D /* libxml2.dylib */,
 				655BB49516EC64CE00E2C91D /* OnlineLatinLookupTool */,
 				655BB4B916EC64CF00E2C91D /* OnlineLatinLookupToolTests */,
@@ -127,6 +134,8 @@
 		655BB49516EC64CE00E2C91D /* OnlineLatinLookupTool */ = {
 			isa = PBXGroup;
 			children = (
+				655BB4D216EC747C00E2C91D /* Reachability.h */,
+				655BB4D316EC747C00E2C91D /* Reachability.m */,
 				655BB4CD16EC659200E2C91D /* OL_LatinMorphData.h */,
 				655BB4CE16EC659200E2C91D /* OL_LatinMorphData.m */,
 				655BB4CA16EC651300E2C91D /* XPathResultNode.h */,
@@ -290,6 +299,7 @@
 				655BB4A916EC64CE00E2C91D /* OL_ViewController.m in Sources */,
 				655BB4CC16EC651300E2C91D /* XPathResultNode.m in Sources */,
 				655BB4CF16EC659200E2C91D /* OL_LatinMorphData.m in Sources */,
+				655BB4D416EC747C00E2C91D /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +486,7 @@
 				655BB4C616EC64CF00E2C91D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		655BB4C716EC64CF00E2C91D /* Build configuration list for PBXNativeTarget "OnlineLatinLookupToolTests" */ = {
 			isa = XCConfigurationList;
@@ -484,6 +495,7 @@
 				655BB4C916EC64CF00E2C91D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
