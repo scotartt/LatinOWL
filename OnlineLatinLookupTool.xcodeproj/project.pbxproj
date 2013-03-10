@@ -23,6 +23,9 @@
 		655BB4B616EC64CF00E2C91D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BB49116EC64CE00E2C91D /* Foundation.framework */; };
 		655BB4BE16EC64CF00E2C91D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 655BB4BC16EC64CF00E2C91D /* InfoPlist.strings */; };
 		655BB4C116EC64CF00E2C91D /* OnlineLatinLookupToolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB4C016EC64CF00E2C91D /* OnlineLatinLookupToolTests.m */; };
+		655BB4CC16EC651300E2C91D /* XPathResultNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB4CB16EC651300E2C91D /* XPathResultNode.m */; };
+		655BB4CF16EC659200E2C91D /* OL_LatinMorphData.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB4CE16EC659200E2C91D /* OL_LatinMorphData.m */; };
+		655BB4D116EC65B300E2C91D /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BB4D016EC65B300E2C91D /* libxml2.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,11 @@
 		655BB4BD16EC64CF00E2C91D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		655BB4BF16EC64CF00E2C91D /* OnlineLatinLookupToolTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnlineLatinLookupToolTests.h; sourceTree = "<group>"; };
 		655BB4C016EC64CF00E2C91D /* OnlineLatinLookupToolTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OnlineLatinLookupToolTests.m; sourceTree = "<group>"; };
+		655BB4CA16EC651300E2C91D /* XPathResultNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathResultNode.h; sourceTree = "<group>"; };
+		655BB4CB16EC651300E2C91D /* XPathResultNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathResultNode.m; sourceTree = "<group>"; };
+		655BB4CD16EC659200E2C91D /* OL_LatinMorphData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OL_LatinMorphData.h; sourceTree = "<group>"; };
+		655BB4CE16EC659200E2C91D /* OL_LatinMorphData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OL_LatinMorphData.m; sourceTree = "<group>"; };
+		655BB4D016EC65B300E2C91D /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				655BB4D116EC65B300E2C91D /* libxml2.dylib in Frameworks */,
 				655BB49016EC64CE00E2C91D /* UIKit.framework in Frameworks */,
 				655BB49216EC64CE00E2C91D /* Foundation.framework in Frameworks */,
 				655BB49416EC64CE00E2C91D /* CoreGraphics.framework in Frameworks */,
@@ -87,6 +96,7 @@
 		655BB48316EC64CE00E2C91D = {
 			isa = PBXGroup;
 			children = (
+				655BB4D016EC65B300E2C91D /* libxml2.dylib */,
 				655BB49516EC64CE00E2C91D /* OnlineLatinLookupTool */,
 				655BB4B916EC64CF00E2C91D /* OnlineLatinLookupToolTests */,
 				655BB48E16EC64CE00E2C91D /* Frameworks */,
@@ -117,6 +127,10 @@
 		655BB49516EC64CE00E2C91D /* OnlineLatinLookupTool */ = {
 			isa = PBXGroup;
 			children = (
+				655BB4CD16EC659200E2C91D /* OL_LatinMorphData.h */,
+				655BB4CE16EC659200E2C91D /* OL_LatinMorphData.m */,
+				655BB4CA16EC651300E2C91D /* XPathResultNode.h */,
+				655BB4CB16EC651300E2C91D /* XPathResultNode.m */,
 				655BB49E16EC64CE00E2C91D /* OL_AppDelegate.h */,
 				655BB49F16EC64CE00E2C91D /* OL_AppDelegate.m */,
 				655BB4A716EC64CE00E2C91D /* OL_ViewController.h */,
@@ -274,6 +288,8 @@
 				655BB49C16EC64CE00E2C91D /* main.m in Sources */,
 				655BB4A016EC64CE00E2C91D /* OL_AppDelegate.m in Sources */,
 				655BB4A916EC64CE00E2C91D /* OL_ViewController.m in Sources */,
+				655BB4CC16EC651300E2C91D /* XPathResultNode.m in Sources */,
+				655BB4CF16EC659200E2C91D /* OL_LatinMorphData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,10 +398,13 @@
 		655BB4C516EC64CF00E2C91D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OnlineLatinLookupTool/OnlineLatinLookupTool-Prefix.pch";
 				INFOPLIST_FILE = "OnlineLatinLookupTool/OnlineLatinLookupTool-Info.plist";
+				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"USER_HEADER_SEARCH_PATHS[arch=*]" = /usr/include/libxml2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -393,10 +412,13 @@
 		655BB4C616EC64CF00E2C91D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OnlineLatinLookupTool/OnlineLatinLookupTool-Prefix.pch";
 				INFOPLIST_FILE = "OnlineLatinLookupTool/OnlineLatinLookupTool-Info.plist";
+				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"USER_HEADER_SEARCH_PATHS[arch=*]" = /usr/include/libxml2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
