@@ -12,18 +12,19 @@
 
 static NSString *const hopperBase = @"http://www.perseus.tufts.edu/hopper/";
 
-@interface OL_LatinMorphData : NSObject <NSURLConnectionDelegate> {
-    UIViewController *viewController;
-    NSURL *theURL;
-    NSString *urlString;
+@interface OL_LatinMorphData : NSObject <NSURLConnectionDelegate>
 
-  }
+  @property(nonatomic, strong) UIViewController *viewController;
+  @property(nonatomic, strong) NSURL *theURL;
+  @property(nonatomic, strong) NSString *urlString;
   @property(nonatomic, strong) NSMutableData *responseData;
   @property(nonatomic, strong) NSURLConnection *urlConnection;
   @property(nonatomic, strong) NSMutableDictionary *definitions;
 
   - (void)searchLatin:(NSString *)latinSearchTerm withController:(UIViewController *)viewController;
+
   - (NSArray *)getAnalysis:(NSData *)data;
+
   - (void)populateLemmaData:(NSData *)data;
 
 @end

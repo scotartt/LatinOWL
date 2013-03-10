@@ -14,15 +14,17 @@
   @synthesize responseData;
   @synthesize urlConnection;
   @synthesize definitions;
+  @synthesize viewController;
+  @synthesize theURL;
+  @synthesize urlString;
 
   - (void)searchLatin:(NSString *)latinSearchTerm withController:(UIViewController *)controller {
     self.definitions = [[NSMutableDictionary alloc] init];
-    viewController = controller;
+    self.viewController = controller;
     self.responseData = [NSMutableData data];
-
-    urlString = [NSString stringWithFormat:@"%@morph?la=la&l=%@", hopperBase, latinSearchTerm];
-    NSLog(@"url = %@", urlString);
-    NSURL *aUrl = [NSURL URLWithString:urlString];
+    self.urlString = [NSString stringWithFormat:@"%@morph?la=la&l=%@", hopperBase, latinSearchTerm];
+    NSLog(@"url = %@", self.urlString);
+    NSURL *aUrl = [NSURL URLWithString:self.urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:aUrl];
     self.urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
   }
@@ -31,34 +33,38 @@
   - (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)response {
     NSLog(@"connection:%@ WillSendRequest:%@ redirecResponse:%@ is called", connection, request.URL.absoluteString, response);
     @autoreleasepool {
-      theURL = [request URL];
+      self.theURL = [request URL];
     }
     return request;
   }
 
   - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     NSLog(@"connection:%@ didReceiveResponse:%@ is called", connection, response);
-    [responseData setLength:0];
+    [self.responseData setLength:0];
   }
 
   - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     NSLog(@"connection:%@ didReceiveData:%@ is called", connection, data);
-    [responseData appendData:data];
+    [self.responseData appendData:data];
   }
 
   - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     NSLog(@"Error = %@", error);
+    OL_ViewController *olViewController = (OL_ViewController *) self.viewController;
+    [olViewController showError:error forConnection:connection];
   }
 
   - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSLog(@"connectionDidFininishLoading:%@ is called", connection);
-    NSString *content = [[NSString alloc] initWithBytes:[responseData bytes]
-                                                 length:[responseData length]
+    NSString *content = [[NSString alloc] initWithBytes:[self.responseData bytes]
+                                                 length:[self.responseData length]
                                                encoding:NSUTF8StringEncoding];
     NSLog(@"Data = %@", content);
-    [self populateLemmaData:responseData];
+    [self populateLemmaData:self.responseData];
 
   }
+
+#pragma mark the population methods that parse the HTML for the necessary data.
 
   - (NSArray *)getAnalysis:(NSData *)data {
     NSString *xPathQueryString = @"//div[@class='analysis']";
@@ -70,19 +76,10 @@
     NSLog(@"xpath=%@", xPathDivClassLemma);
     NSArray *idNodes = [self getLemmaIds:[XPathResultNode nodesForXPathQuery:xPathDivClassLemma onHTML:data]];
     if (idNodes == nil || [idNodes count] == 0) {
-      // error
-      NSString *errorString;
-      NSArray *errorData = [XPathResultNode nodesForXPathQuery:@"//div[@id='main_col']/p" onHTML:data];
-      NSLog(@"data=%@", data);
-      if (errorData != nil && [errorData count] > 0) {
-        XPathResultNode *errorNode = (XPathResultNode *) [errorData objectAtIndex:0];
-        errorString = [errorNode contentString];
-      } else{
-        errorString = @"Unknown data error";
-      }
-      NSString *reasonStr = [NSString stringWithFormat:@"%@: No lemmata were parsed from the output.", errorString];
+      NSString *reasonStr = [self cannotParseLemmataFromData:data];
       @throw [NSException exceptionWithName:@"NoLemmataPresent" reason:reasonStr userInfo:nil];
     }
+
     for (NSString *lemmaId in idNodes) {
       NSMutableDictionary *lemmaDict = [[NSMutableDictionary alloc] init];
       NSLog(@"lemma nodeID='%@'", lemmaId);
@@ -94,6 +91,7 @@
       [[self definitions] setObject:lemmaDict forKey:lemmaId];
     }
   }
+
 
   - (void)lemmaLexiconLinks:(NSData *)data lemmaId:(NSString *)lemmaId lemmaDict:(NSMutableDictionary *)lemmaDict {
     NSString *xPath = [NSString stringWithFormat:@"//div[@class='analysis']//div[@id='%@']/p/a", lemmaId];
@@ -124,8 +122,6 @@
         if ([links count] == 1) {
           XPathResultNode *link = [links objectAtIndex:0];
           NSString *linkhref = [link.attributes objectForKey:@"href"];
-          //NSLog(@"                  The link href is: %@", linkhref);
-          //NSLog(@"The original node contentString is: %@", [node contentString]);
           NSString *artificialLinkStr = [NSString stringWithFormat:@"<a lemma='%@' id='%@' href='%@%@'>%@</a>", lemmaId, linkId, hopperBase, linkhref,
                                                                    [node contentString]];
           NSLog(@"The link should be: %@", artificialLinkStr);
@@ -184,6 +180,75 @@
       [result addObject:theNodeId];
     }
     return result;
+  }
+
+  // ERROR HANDLING FROM SERVER IS BELOW HERE.
+  //
+  // 1. If we get an error, it either looks like this (i.e. server error);
+  //
+  //  <html><head>
+  //  <title>503 Service Temporarily Unavailable</title>
+  //  </head><body>
+  //  <h1>Service Temporarily Unavailable</h1>
+  //  <p>The server is temporarily unable to service your
+  //      request due to maintenance downtime or capacity
+  //  problems. Please try again later.</p>
+  //  <hr>
+  //  <address>Apache/2.2.14 (Ubuntu) Server at new13.perseus.tufts.edu Port 80</address>
+  //  </body></html>
+  //
+  // 2. OR it looks like this: (i.e. 'word not found' basically) Trimmed to the interesting bits.
+  //
+  // <html><head>
+  //  <title>Latin Word Study Tool</title>
+  // ...
+  //  <body onload="document.f.l.focus(); checkRedirect();">
+  // ...
+  //  <div id="main">
+  // ...
+  //  <div id="main_col">
+  //      <p>Sorry, no information was found for <span class="la">sgskg</span>.</p>
+  //  </div>
+  //  </div>
+  //  </body></html>
+
+  - (NSString *)cannotParseLemmataFromData:(NSData *)data {
+    // error
+    NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    // NSLog(@"Data could not be parsed into lemmata! Data=%@", dataString);
+    NSString *errorString;
+    NSArray *errorTitleValues = [XPathResultNode nodesForXPathQuery:@"//title" onHTML:data];
+    NSString *errorTitleText;
+    if (errorTitleValues != nil && [errorTitleValues count] > 0) {
+      XPathResultNode *errorTitleNode = (XPathResultNode *) [errorTitleValues objectAtIndex:0];
+      if (errorTitleNode != nil) {
+        errorTitleText = errorTitleNode.contentString;
+        //NSLog(@"Error title: %@", errorTitleText);
+      }
+    }
+
+    if (errorTitleText != nil && [errorTitleText isEqualToString:@"Latin Word Study Tool"]) {
+      NSArray *errorData = [XPathResultNode nodesForXPathQuery:@"//div[@id='main_col']/p" onHTML:data];
+      if (errorData != nil && [errorData count] > 0) {
+        XPathResultNode *errorNode = (XPathResultNode *) [errorData objectAtIndex:0];
+        NSString *appended = [errorNode contentStringByUnifyingSubnodesWithSeparator:@" "];
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\s*\\.\\s*$" options:0 error:nil];
+        NSString *fixed = [regex stringByReplacingMatchesInString:appended options:nil range:NSMakeRange(0, [appended length]) withTemplate:@"."];
+        errorString = [NSString stringWithFormat:@"Can't find search term: '%@'", fixed];
+      } else {
+        errorString = @"Unknown issue with data!";
+        NSLog(@"%@ Data could not be parsed into lemmata! Data=%@", errorString, dataString);
+      }
+    } else if (errorTitleText != nil) {
+      errorString = [NSString stringWithFormat:@"Server error: %@", errorTitleText];
+    } else {
+      errorString = @"Unknown error!";
+      NSLog(@"%@ Data could not be parsed into lemmata! Data=%@", errorString, dataString);
+    }
+
+    NSString *reasonStr = [NSString stringWithFormat:@"%@", errorString];
+    NSLog(@"Error reason was: %@", reasonStr);
+    return reasonStr;
   }
 
 @end

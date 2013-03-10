@@ -6,6 +6,8 @@
 //  Copyright 2011 Matt Gallagher. All rights reserved.
 //  MINOR ALTERATIONS MADE 2013 Scot Mcphee:
 //    a. changed to use ARC, which is to say I removed use of 'retain' and 'dealloc' etc.
+//    b. added contentStringByUnifyingSubnodesWithSeparator:NSString which allows
+//       to append all child nodes with a given separator string (e.g. space).
 //
 //  This software is provided 'as-is', without any express or implied
 //  warranty. In no event will the authors be held liable for any damages
@@ -407,6 +409,57 @@
 	
 	return result;
 }
+
+//
+// contentStringByUnifyingSubnodes
+//
+// Content accessor that returns the concatenated string content of this and
+// all child nodes (concatenation is depth first).
+//
+// Useful for returning text from HTML where text may span various markup tags.
+//
+// returns the concatenated string (or nil if neither this nor subnodes contain
+//	text)
+//
+  - (NSString *)contentStringByUnifyingSubnodesWithSeparator:(NSString *) separator
+  {
+    NSMutableString *result = nil;
+
+    for (NSObject *object in content)
+    {
+      if ([object isKindOfClass:[NSString class]])
+      {
+        if (!result)
+        {
+          result = [NSMutableString stringWithString:(NSString *)object];
+        }
+        else
+        {
+          [result appendString:separator];
+          [result appendString:(NSString *)object];
+        }
+      }
+      else
+      {
+        NSString *subnodeResult = [(XPathResultNode *)object contentStringByUnifyingSubnodes];
+
+        if (subnodeResult)
+        {
+          if (!result)
+          {
+            result = [NSMutableString stringWithString:subnodeResult];
+          }
+          else
+          {
+            [result appendString:separator];
+            [result appendString:subnodeResult];
+          }
+        }
+      }
+    }
+
+    return result;
+  }
 
 
 @end

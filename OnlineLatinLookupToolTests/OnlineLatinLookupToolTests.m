@@ -132,11 +132,24 @@
     NSDictionary *amoData = [dict objectForKey:@"eo"];
     NSArray *dataArray = [amoData objectForKey:@"definition"];
     STAssertNotNil(dataArray, @"must have data elements");
-    NSLog(@"array has %d elements", dataArray.count);
-
+    STAssertEquals((int) 1, (int) dataArray.count, @"must be only one definition of any single lemma");
     XPathResultNode *node = [dataArray objectAtIndex:0];
     NSLog(@"content=%@", [node contentString]);
     STAssertTrue([[node contentString] isEqualToString:@"to go, walk, ride, sail, fly, move, pass"], @"The second definition of 'eo' is wrong!");
+  }
+
+  - (void)testParseLemmaContentFor_eo_hasTableOfPossibilities {
+    NSData *data = [self getData:latinData withLatin:@"eo"];
+    [latinData populateLemmaData:data];
+    NSDictionary *dict = latinData.definitions;
+    NSDictionary *eosData = [dict objectForKey:@"Eos"];
+    NSArray *dataArray = [eosData objectForKey:@"table"];
+    STAssertNotNil(dataArray, @"must have data elements");
+    STAssertEquals((int) 2, (int) dataArray.count, @"'eo' for 'Eos' has two possible parts (sg dat & sg abl)");
+    for (XPathResultNode *node in dataArray) {
+      NSLog(@"content=%@", [node description]);
+      STAssertTrue([node.name isEqualToString:@"tr"], @"all elements in 'table' should be 'tr'");
+    }
   }
 
   - (void)testParseLemmaContentFor_eo_whatsInTheLexicon {
@@ -146,10 +159,30 @@
     NSDictionary *eoData = [dict objectForKey:@"eo"];
     NSArray *dataArray = [eoData objectForKey:@"lexicon"];
     STAssertNotNil(dataArray, @"must have lexicon elements");
-    NSLog(@"array has %d elements", dataArray.count);
+    STAssertEquals((int) 5, (int) dataArray.count, @"should be 5 lexicon links");
     for (XPathResultNode *node in dataArray) {
       NSLog(@"data=%@", [node description]);
     }
+  }
+
+  - (void)testParseLemmaContentFor_eo2_whatsInTheLexicon {
+    NSData *data = [self getData:latinData withLatin:@"eo"];
+    [latinData populateLemmaData:data];
+    NSDictionary *dict = latinData.definitions;
+    NSDictionary *eoData = [dict objectForKey:@"eo2"];
+    NSArray *dataArray = [eoData objectForKey:@"lexicon"];
+    STAssertNotNil(dataArray, @"must have lexicon elements");
+    STAssertEquals((int) 5, (int) dataArray.count, @"should be 5 lexicon links");
+    for (XPathResultNode *node in dataArray) {
+      NSLog(@"data=%@", [node description]);
+    }
+  }
+
+  - (void)testParseNonLatinWord {
+    NSData *data = [self getData:latinData withLatin:@"hello"];
+
+    STAssertThrows([latinData populateLemmaData:data], @"Expect an exception!");
+
   }
 
   - (void)testParseLemmaContentFor_eo_hasLexiconLinks {

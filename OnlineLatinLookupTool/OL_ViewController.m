@@ -29,4 +29,9 @@
   }
 
 
+  - (void)showError:(NSError *)error forConnection:(NSURLConnection *)connection {
+
+  }
+
+
 @end

@@ -6,6 +6,8 @@
 //  Copyright 2011 Matt Gallagher. All rights reserved.
 //  MINOR ALTERATIONS MADE 2013 Scot Mcphee:
 //    a. changed to use ARC, which is to say I removed use of 'retain' and 'dealloc' etc.
+//    b. added contentStringByUnifyingSubnodesWithSeparator:NSString which allows
+//       to append all child nodes with a given separator string (e.g. space).
 //
 //  This software is provided 'as-is', without any express or implied
 //  warranty. In no event will the authors be held liable for any damages
@@ -23,22 +25,27 @@
 //     distribution.
 //
 
-@interface XPathResultNode : NSObject
-{
-	NSString *name;
-	NSMutableDictionary *attributes;
-	NSMutableArray *content;
-}
+@interface XPathResultNode : NSObject {
+    NSString *name;
+    NSMutableDictionary *attributes;
+    NSMutableArray *content;
+  }
 
-@property (nonatomic, strong, readonly) NSString *name;
-@property (nonatomic, strong, readonly) NSMutableDictionary *attributes;
-@property (nonatomic, strong, readonly) NSMutableArray *content;
+  @property(nonatomic, strong, readonly) NSString *name;
+  @property(nonatomic, strong, readonly) NSMutableDictionary *attributes;
+  @property(nonatomic, strong, readonly) NSMutableArray *content;
 
-+ (NSArray *)nodesForXPathQuery:(NSString *)query onHTML:(NSData *)htmlData;
-+ (NSArray *)nodesForXPathQuery:(NSString *)query onXML:(NSData *)xmlData;
+  + (NSArray *)nodesForXPathQuery:(NSString *)query onHTML:(NSData *)htmlData;
 
-- (NSArray *)childNodes;
-- (NSString *)contentString;
-- (NSString *)contentStringByUnifyingSubnodes;
+  + (NSArray *)nodesForXPathQuery:(NSString *)query onXML:(NSData *)xmlData;
+
+  - (NSArray *)childNodes;
+
+  - (NSString *)contentString;
+
+  - (NSString *)contentStringByUnifyingSubnodes;
+
+  - (NSString *)contentStringByUnifyingSubnodesWithSeparator:(NSString *)separator;
+
 
 @end

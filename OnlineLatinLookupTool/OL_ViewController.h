@@ -14,4 +14,5 @@
 -(void)refreshViewData:(OL_LatinMorphData *)latinMorph;
 
 
+  - (void)showError:(NSError *)error forConnection:(NSURLConnection *)connection;
 @end
