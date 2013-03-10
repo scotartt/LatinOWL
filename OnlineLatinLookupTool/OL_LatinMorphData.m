@@ -109,12 +109,12 @@
     // get the embedded links, which are elsewhere in the html;
     // these can be found by regex on the id of the node, and
     // trivially transforming it to a new id format, then searching.
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"-link$" options:0 error:nil];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"-link$" options:nil error:nil];
     NSMutableArray *lexiconTemp = [NSMutableArray array];
     for (XPathResultNode *node in lexicon) {
       @try {
         NSString *nodeId = [[node attributes] objectForKey:@"id"];
-        NSString *linkId = [regex stringByReplacingMatchesInString:nodeId options:0 range:NSMakeRange(0, [nodeId length]) withTemplate:@"-contents"];
+        NSString *linkId = [regex stringByReplacingMatchesInString:nodeId options:nil range:NSMakeRange(0, [nodeId length]) withTemplate:@"-contents"];
         NSString *xPathLink = [NSString stringWithFormat:@"//div[@id='lexicon']/div[@id='%@']/p[@class='new_window_link']/a[@target]", linkId];
         NSLog(@"xpath=%@", xPathLink);
         NSArray *links = [XPathResultNode nodesForXPathQuery:xPathLink onHTML:data];
