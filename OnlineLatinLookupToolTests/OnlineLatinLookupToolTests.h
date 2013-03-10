@@ -11,7 +11,7 @@
 
 @interface OnlineLatinLookupToolTests : SenTestCase
 
-  @property(nonatomic, strong) UIViewController *controller;
+  @property(nonatomic, strong) OL_ViewController *controller;
   @property(nonatomic, strong) OL_LatinMorphData *latinData;
 
 @end

@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "OL_LatinMorphData.h"
 
-@interface OL_ViewController : UIViewController
+@interface OL_ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
--(void)refreshViewData:(OL_LatinMorphData *)latinMorph;
+  @property(weak, nonatomic) IBOutlet UISearchBar *searchBar;
+  @property(weak, nonatomic) IBOutlet UITableView *tableView;
+  @property(strong, nonatomic) NSString *searchText;
 
-
+  - (void)refreshViewData:(OL_LatinMorphData *)latinMorph;
   - (void)showError:(NSError *)error forConnection:(NSURLConnection *)connection;
+
 @end

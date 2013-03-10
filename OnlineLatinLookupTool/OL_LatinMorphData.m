@@ -18,7 +18,7 @@
   @synthesize theURL;
   @synthesize urlString;
 
-  - (void)searchLatin:(NSString *)latinSearchTerm withController:(UIViewController *)controller {
+  - (void)searchLatin:(NSString *)latinSearchTerm withController:(OL_ViewController *)controller {
     self.definitions = [[NSMutableDictionary alloc] init];
     self.viewController = controller;
     self.responseData = [NSMutableData data];
@@ -49,9 +49,7 @@
   }
 
   - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    NSLog(@"Error = %@", error);
-    OL_ViewController *olViewController = (OL_ViewController *) self.viewController;
-    [olViewController showError:error forConnection:connection];
+    [self.viewController showError:error forConnection:connection];
   }
 
   - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -61,6 +59,7 @@
                                                encoding:NSUTF8StringEncoding];
     NSLog(@"Data = %@", content);
     [self populateLemmaData:self.responseData];
+    [viewController refreshViewData:self];
 
   }
 

@@ -27,38 +27,41 @@
   - (void)startReach {
     // starts the 'reachability' network notification.
     NSLog(@"Starting up 'Reachability' network notification to %@", hostName);
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachChanged:) name:kReachabilityChangedNotification object:nil];
-    Reachability *reach = [Reachability reachabilityWithHostName:hostName];
-    [reach startNotifier];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
+    hostReach = [Reachability reachabilityWithHostName:hostName];
+    [hostReach startNotifier];
     // test it right off the bat to alert the user if anything is wrong.
-    NetworkStatus status = [reach currentReachabilityStatus];
-    if (status == NotReachable) {
-      netAlert = [[UIAlertView alloc] initWithTitle:@"Perseus Alert"
-                                            message:@"perseus.tufts.edu is not reachable." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-      [netAlert show];
-    }
+    NetworkStatus status = [hostReach currentReachabilityStatus];
+    NSLog(@"Current perseus status: %@", [self stringFromStatus:status]);
+    [self updateInterfaceWithReachability:hostReach];
   }
 
-  - (void)reachChanged:(NSNotification *)notification {
+  - (void)reachabilityChanged:(NSNotification *)notification {
     // this method is called when the
     Reachability *reach = [notification object];
-    if ([reach isKindOfClass:[Reachability class]]) {
+    NSParameterAssert([reach isKindOfClass:[Reachability class]]);
+    [self updateInterfaceWithReachability:reach];
+  }
+
+  - (void)updateInterfaceWithReachability:(Reachability *)reach {
+
+    if (reach == hostReach) {
       NetworkStatus status = [reach currentReachabilityStatus];
       NSLog(@"Perseus network status changed: now %@", [self stringFromStatus:status]);
       if (status == NotReachable) {
-        netAlert = [[UIAlertView alloc] initWithTitle:@"Perseus Alert"
+        self.netAlert = [[UIAlertView alloc] initWithTitle:@"Perseus Alert"
                                               message:@"perseus.tufts.edu is not reachable." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [netAlert show];
+        [self.netAlert show];
       } else if (netAlert != nil && netAlert.visible == YES) {
         NSLog(@"Dismissing stale network alert: %@", netAlert.title);
-        [netAlert setTitle:@"Perseus OK"];
-        [netAlert setMessage:@"Reachable! HUZZAH!"];
-        [netAlert dismissWithClickedButtonIndex:0 animated:YES];
-        [netAlert setHidden:YES];
-        netAlert = nil;
+        [self.netAlert setTitle:@"Perseus OK"];
+        [self.netAlert setMessage:@"Reachable! HUZZAH!"];
+        [self.netAlert dismissWithClickedButtonIndex:0 animated:YES];
+        [self.netAlert setHidden:YES];
+        self.netAlert = nil;
       } else {
         NSLog(@"No stale network alert to dismiss.");
-        netAlert = nil;
+        self.netAlert = nil;
       }
     }
   }
