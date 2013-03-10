@@ -7,7 +7,11 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "OL_LatinMorphData.h"
 
 @interface OnlineLatinLookupToolTests : SenTestCase
+
+  @property(nonatomic, strong) UIViewController *controller;
+  @property(nonatomic, strong) OL_LatinMorphData *latinData;
 
 @end

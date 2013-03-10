@@ -184,16 +184,6 @@
       [result addObject:theNodeId];
     }
     return result;
-
   }
-
-  - (void)print:(NSArray *)nodes {
-    NSLog(@"nodecount = %d", [nodes count]);
-    for (XPathResultNode *node in nodes) {
-      NSLog(@"node = '%@'", [node description]);
-    }
-
-  }
-
 
 @end
