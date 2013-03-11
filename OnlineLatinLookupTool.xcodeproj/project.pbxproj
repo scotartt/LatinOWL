@@ -28,6 +28,7 @@
 		655BB4D116EC65B300E2C91D /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BB4D016EC65B300E2C91D /* libxml2.dylib */; };
 		655BB4D416EC747C00E2C91D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB4D316EC747C00E2C91D /* Reachability.m */; };
 		655BB4D616EC74AC00E2C91D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BB4D516EC74AC00E2C91D /* SystemConfiguration.framework */; };
+		65CE8C9E16EDF2B100B09599 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65CE8C9D16EDF2B100B09599 /* MainStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		655BB4D216EC747C00E2C91D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		655BB4D316EC747C00E2C91D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		655BB4D516EC74AC00E2C91D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		65CE8C9D16EDF2B100B09599 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 				655BB4CB16EC651300E2C91D /* XPathResultNode.m */,
 				655BB49E16EC64CE00E2C91D /* OL_AppDelegate.h */,
 				655BB49F16EC64CE00E2C91D /* OL_AppDelegate.m */,
+				65CE8C9D16EDF2B100B09599 /* MainStoryboard.storyboard */,
 				655BB4A716EC64CE00E2C91D /* OL_ViewController.h */,
 				655BB4A816EC64CE00E2C91D /* OL_ViewController.m */,
 				655BB4AA16EC64CE00E2C91D /* OL_ViewController.xib */,
@@ -260,6 +263,7 @@
 				655BB4A416EC64CE00E2C91D /* Default@2x.png in Resources */,
 				655BB4A616EC64CE00E2C91D /* Default-568h@2x.png in Resources */,
 				655BB4AC16EC64CE00E2C91D /* OL_ViewController.xib in Resources */,
+				65CE8C9E16EDF2B100B09599 /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

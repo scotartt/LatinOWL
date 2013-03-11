@@ -16,7 +16,11 @@
   - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.viewController = [[OL_ViewController alloc] initWithNibName:@"OL_ViewController" bundle:nil];
+      
+    self.storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard"
+                                                    bundle:nil];
+    self.viewController = (OL_ViewController *) [self.storyBoard instantiateViewControllerWithIdentifier:@"OL_ViewController"];
+      
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     [self startReach];

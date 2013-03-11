@@ -22,6 +22,7 @@ static NSString *const hostName = @"www.perseus.tufts.edu";
   @property(strong, nonatomic) UIWindow *window;
   @property(strong, nonatomic) OL_ViewController *viewController;
   @property(strong, nonatomic) UIAlertView *netAlert;
+  @property(strong, nonatomic) UIStoryboard *storyBoard;
 
   - (NSString *)stringFromStatus:(NetworkStatus)status;
 

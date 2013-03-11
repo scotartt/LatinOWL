@@ -76,7 +76,17 @@
     NSArray *idNodes = [self getLemmaIds:[XPathResultNode nodesForXPathQuery:xPathDivClassLemma onHTML:data]];
     if (idNodes == nil || [idNodes count] == 0) {
       NSString *reasonStr = [self cannotParseLemmataFromData:data];
-      @throw [NSException exceptionWithName:@"NoLemmataPresent" reason:reasonStr userInfo:nil];
+      NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithCapacity:2];
+        [userInfo setObject:@"Search Failed" forKey:@"title"];
+        [userInfo setObject:reasonStr
+                   forKey:@"message"];
+      NSException *exception = [NSException exceptionWithName:@"NoLemmataPresent" reason:reasonStr userInfo:userInfo];
+        if (viewController != nil) {
+            [viewController showError:exception
+                        forSearchTerm:self.urlString];
+        } else {
+            @throw exception;
+        }
     }
 
     for (NSString *lemmaId in idNodes) {
@@ -108,12 +118,12 @@
     // get the embedded links, which are elsewhere in the html;
     // these can be found by regex on the id of the node, and
     // trivially transforming it to a new id format, then searching.
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"-link$" options:nil error:nil];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"-link$" options:NSRegularExpressionCaseInsensitive error:nil];
     NSMutableArray *lexiconTemp = [NSMutableArray array];
     for (XPathResultNode *node in lexicon) {
       @try {
         NSString *nodeId = [[node attributes] objectForKey:@"id"];
-        NSString *linkId = [regex stringByReplacingMatchesInString:nodeId options:nil range:NSMakeRange(0, [nodeId length]) withTemplate:@"-contents"];
+        NSString *linkId = [regex stringByReplacingMatchesInString:nodeId options:NSRegularExpressionCaseInsensitive range:NSMakeRange(0, [nodeId length]) withTemplate:@"-contents"];
         NSString *xPathLink = [NSString stringWithFormat:@"//div[@id='lexicon']/div[@id='%@']/p[@class='new_window_link']/a[@target]", linkId];
         NSLog(@"xpath=%@", xPathLink);
         NSArray *links = [XPathResultNode nodesForXPathQuery:xPathLink onHTML:data];
@@ -215,7 +225,7 @@
     // error
     NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     // NSLog(@"Data could not be parsed into lemmata! Data=%@", dataString);
-    NSString *errorString;
+    NSString *reasonStr;
     NSArray *errorTitleValues = [XPathResultNode nodesForXPathQuery:@"//title" onHTML:data];
     NSString *errorTitleText;
     if (errorTitleValues != nil && [errorTitleValues count] > 0) {
@@ -232,20 +242,19 @@
         XPathResultNode *errorNode = (XPathResultNode *) [errorData objectAtIndex:0];
         NSString *appended = [errorNode contentStringByUnifyingSubnodesWithSeparator:@" "];
         NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\s*\\.\\s*$" options:0 error:nil];
-        NSString *fixed = [regex stringByReplacingMatchesInString:appended options:nil range:NSMakeRange(0, [appended length]) withTemplate:@"."];
-        errorString = [NSString stringWithFormat:@"Can't find search term: '%@'", fixed];
+        NSString *fixed = [regex stringByReplacingMatchesInString:appended options:NULL range:NSMakeRange(0, [appended length]) withTemplate:@"."];
+        reasonStr = [NSString stringWithFormat:@"Not found. Server reported: \"%@\"", fixed];
       } else {
-        errorString = @"Unknown issue with data!";
-        NSLog(@"%@ Data could not be parsed into lemmata! Data=%@", errorString, dataString);
+        reasonStr = @"Unknown issue with data!";
+        NSLog(@"%@ Data could not be parsed into lemmata! Data=%@", reasonStr, dataString);
       }
     } else if (errorTitleText != nil) {
-      errorString = [NSString stringWithFormat:@"Server error: %@", errorTitleText];
+      reasonStr = [NSString stringWithFormat:@"Server error: %@", errorTitleText];
     } else {
-      errorString = @"Unknown error!";
-      NSLog(@"%@ Data could not be parsed into lemmata! Data=%@", errorString, dataString);
+      reasonStr = @"Unknown error!";
+      NSLog(@"%@ Data could not be parsed into lemmata! Data=%@", reasonStr, dataString);
     }
 
-    NSString *reasonStr = [NSString stringWithFormat:@"%@", errorString];
     NSLog(@"Error reason was: %@", reasonStr);
     return reasonStr;
   }

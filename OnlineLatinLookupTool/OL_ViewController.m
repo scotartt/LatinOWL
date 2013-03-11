@@ -17,8 +17,9 @@
 
   - (void)viewDidLoad {
     [super viewDidLoad];
+      [self.tableView setHidden:YES];
     self.title = @"Online Latin Lookup";
-
+    [self.activityIndicator stopAnimating];
   }
 
   - (void)didReceiveMemoryWarning {
@@ -28,11 +29,22 @@
 
   - (void)refreshViewData:(OL_LatinMorphData *)latinMorph {
     NSLog(@"refreshViewData called from URL %@", latinMorph.urlString);
+   [self.activityIndicator stopAnimating];
+      [self.tableView setHidden:NO];
+
   }
 
   - (void)showError:(NSError *)error forConnection:(NSURLConnection *)connection {
     NSLog(@"Error = %@", error);
   }
+
+- (void)showError:(NSException *)exception forSearchTerm:(NSString *)searchTerm {
+    NSLog(@"For search term=%@ - got error = %@", searchTerm, [exception description]);
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:(NSString *)[exception.userInfo objectForKey:@"title"]
+                                               message:(NSString *)[exception.userInfo objectForKey:@"message"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+
+}
 
 #pragma UISearchBarDelegate methods
 
@@ -41,6 +53,9 @@
   }
 
   - (void)handleSearch:(UISearchBar *)searchBar {
+    [self.activityIndicator startAnimating];
+      [self.tableView setHidden:YES];
+
     NSLog(@"User searched for '%@'", searchBar.text);
     [searchBar resignFirstResponder]; // keyboard go away
     self.searchText = searchBar.text;
@@ -51,6 +66,8 @@
   - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     NSLog(@"User canceled search");
     [searchBar resignFirstResponder]; // keyboard go away
+    [self.activityIndicator stopAnimating];
+
   }
 
 #pragma UITableViewDelegate methods
