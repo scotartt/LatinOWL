@@ -12,6 +12,11 @@
 
 static NSString *const hopperBase = @"http://www.perseus.tufts.edu/hopper/";
 
+static NSString *const KEY_HEADING = @"heading";
+static NSString *const KEY_DEFINITION = @"definition";
+static NSString *const KEY_TABLE = @"table";
+static NSString *const KEY_LEXICON = @"lexicon";
+
 @interface OL_LatinMorphData : NSObject <NSURLConnectionDelegate>
 
   @property(nonatomic, strong) OL_ViewController *viewController;
@@ -20,11 +25,15 @@ static NSString *const hopperBase = @"http://www.perseus.tufts.edu/hopper/";
   @property(nonatomic, strong) NSMutableData *responseData;
   @property(nonatomic, strong) NSURLConnection *urlConnection;
   @property(nonatomic, strong) NSMutableDictionary *definitions;
+  @property(nonatomic, strong) NSArray *lemmas;
 
   - (void)searchLatin:(NSString *)latinSearchTerm withController:(OL_ViewController *)viewController;
-
   - (NSArray *)getAnalysis:(NSData *)data;
-
   - (void)populateLemmaData:(NSData *)data;
+  - (NSString *)theMeaning:(NSString *)lemmaId;
+  - (NSString *)theHeaderString:(NSString *)lemmaId;
+  - (NSString *)theForm:(NSString *)lemmaId ofIndex:(int)index;
+  - (NSString *)theFormParsed:(NSString *)lemmaId ofIndex:(int)index;
 
+  - (OL_LatinMorphData *)reset;
 @end

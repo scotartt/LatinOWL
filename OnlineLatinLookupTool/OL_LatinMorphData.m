@@ -17,16 +17,70 @@
   @synthesize viewController;
   @synthesize theURL;
   @synthesize urlString;
+  @synthesize lemmas;
 
-  - (void)searchLatin:(NSString *)latinSearchTerm withController:(OL_ViewController *)controller {
+  - (OL_LatinMorphData *)reset {
     self.definitions = [[NSMutableDictionary alloc] init];
-    self.viewController = controller;
     self.responseData = [NSMutableData data];
+    self.lemmas = [NSMutableArray array];
+    self.urlConnection = nil;
+    return self;
+  }
+  - (void)searchLatin:(NSString *)latinSearchTerm withController:(OL_ViewController *)controller {
+    self.viewController = controller;
     self.urlString = [NSString stringWithFormat:@"%@morph?la=la&l=%@", hopperBase, latinSearchTerm];
     NSLog(@"url = %@", self.urlString);
     NSURL *aUrl = [NSURL URLWithString:self.urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:aUrl];
     self.urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+  }
+
+#pragma accessor methods for data once parsed
+  - (NSString *)theMeaning:(NSString *)lemmaId {
+    NSDictionary *lemmaDict = [self.definitions objectForKey:lemmaId];
+    NSArray *definitionNodes = [lemmaDict objectForKey:KEY_DEFINITION];
+    NSLog(@"%@=%@", KEY_DEFINITION, definitionNodes);
+    NSMutableString *meaning = [NSMutableString stringWithString:@"-- "];
+    for (XPathResultNode *definition in definitionNodes) {
+      [meaning appendString:[definition contentString]];
+    }
+    return meaning;
+  }
+
+  - (NSString *)theHeaderString:(NSString *)lemmaId {
+    NSArray *headers = [[[self definitions] objectForKey:lemmaId] objectForKey:KEY_HEADING];
+    NSLog(@"%@=%@", KEY_HEADING, headers);
+    NSMutableString *headerTitleString = [NSMutableString stringWithString:@""];
+    for (XPathResultNode *header in headers) {
+      [headerTitleString appendString:[header contentString]];
+    }
+    return headerTitleString;
+  }
+
+  - (NSString *)theForm:(NSString *)lemmaId ofIndex:(int)index {
+    NSArray *table = [[[self definitions] objectForKey:lemmaId] objectForKey:KEY_TABLE];
+    @try {
+      XPathResultNode *node = [table objectAtIndex:index];
+      NSLog(@"table = %@", node);
+      XPathResultNode *td0 = [[node childNodes] objectAtIndex:0];
+      return [td0 contentString];
+    } @catch (id theException) {
+      NSLog(@"Caught an exception trying to get the form data: %@", theException);
+    }
+    return @"";
+  }
+
+  - (NSString *)theFormParsed:(NSString *)lemmaId ofIndex:(int)index {
+    NSArray *table = [[[self definitions] objectForKey:lemmaId] objectForKey:KEY_TABLE];
+    @try {
+      XPathResultNode *node = [table objectAtIndex:index];
+      NSLog(@"table = %@", node);
+      XPathResultNode *td1 = [[node childNodes] objectAtIndex:1];
+      return [td1 contentString];
+    } @catch (id theException) {
+      NSLog(@"Caught an exception trying to get the form parse data: %@", theException);
+    }
+    return @"";
   }
 
 #pragma mark NSURLConnectionDelegate methods
@@ -74,22 +128,24 @@
     NSString *xPathDivClassLemma = @"//div[@class='analysis']//div[@class='lemma']";
     NSLog(@"xpath=%@", xPathDivClassLemma);
     NSArray *idNodes = [self getLemmaIds:[XPathResultNode nodesForXPathQuery:xPathDivClassLemma onHTML:data]];
+    NSMutableArray *temporaryLemmas = [NSMutableArray arrayWithCapacity:[idNodes count]];
     if (idNodes == nil || [idNodes count] == 0) {
       NSString *reasonStr = [self cannotParseLemmataFromData:data];
       NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithCapacity:2];
-        [userInfo setObject:@"Search Failed" forKey:@"title"];
-        [userInfo setObject:reasonStr
+      [userInfo setObject:@"Search Failed" forKey:@"title"];
+      [userInfo setObject:reasonStr
                    forKey:@"message"];
       NSException *exception = [NSException exceptionWithName:@"NoLemmataPresent" reason:reasonStr userInfo:userInfo];
-        if (viewController != nil) {
-            [viewController showError:exception
-                        forSearchTerm:self.urlString];
-        } else {
-            @throw exception;
-        }
+      if (viewController != nil) {
+        [viewController showError:exception
+                    forSearchTerm:self.urlString];
+      } else {
+        @throw exception;
+      }
     }
 
     for (NSString *lemmaId in idNodes) {
+      [temporaryLemmas addObject:lemmaId];
       NSMutableDictionary *lemmaDict = [[NSMutableDictionary alloc] init];
       NSLog(@"lemma nodeID='%@'", lemmaId);
       [self lemmaHeading:data lemmaId:lemmaId nodeData:lemmaDict];
@@ -99,6 +155,7 @@
 
       [[self definitions] setObject:lemmaDict forKey:lemmaId];
     }
+    [self setLemmas:temporaryLemmas];
   }
 
 
@@ -108,13 +165,13 @@
     NSArray *queryResult = [XPathResultNode nodesForXPathQuery:xPath onHTML:data];
     // we need a mutable array, because we are going to add to it
     NSMutableArray *lexicon = [NSMutableArray arrayWithArray:queryResult];
-    NSMutableArray *lexiconTemp = [self lexiconLinks:data forLemma:lemmaId withLexicon:lexicon];
+    NSMutableArray *lexiconTemp = [self extractLinksFromStaticHtml:data forLemma:lemmaId withLexicon:lexicon];
     [lexicon addObjectsFromArray:lexiconTemp];
-    [self setIntoData:lemmaDict theValue:lexicon withKey:@"lexicon" whichCameFromXpath:xPath];
+    [self setIntoData:lemmaDict theValue:lexicon withKey:KEY_LEXICON whichCameFromXpath:xPath];
 
   }
 
-  - (NSMutableArray *)lexiconLinks:(NSData *)data forLemma:(NSString *)lemmaId withLexicon:(NSArray *)lexicon {
+  - (NSMutableArray *)extractLinksFromStaticHtml:(NSData *)data forLemma:(NSString *)lemmaId withLexicon:(NSArray *)lexicon {
     // get the embedded links, which are elsewhere in the html;
     // these can be found by regex on the id of the node, and
     // trivially transforming it to a new id format, then searching.
@@ -154,7 +211,7 @@
     NSString *xPath = [NSString stringWithFormat:@"//div[@class='analysis']//div[@id='%@']/table//tr", lemmaId];
     NSLog(@"xpath=%@", xPath);
     NSArray *table = [XPathResultNode nodesForXPathQuery:xPath onHTML:data];
-    [self setIntoData:lemmaDict theValue:table withKey:@"table" whichCameFromXpath:xPath];
+    [self setIntoData:lemmaDict theValue:table withKey:KEY_TABLE whichCameFromXpath:xPath];
   }
 
   - (void)lemmaDefinition:(NSData *)data lemmaId:(NSString *)lemmaId nodeData:(NSMutableDictionary *)lemmaDict {
@@ -162,14 +219,14 @@
                                                  lemmaId];
     NSLog(@"xpath=%@", xPath);
     NSArray *definition = [XPathResultNode nodesForXPathQuery:xPath onHTML:data];
-    [self setIntoData:lemmaDict theValue:definition withKey:@"definition" whichCameFromXpath:xPath];
+    [self setIntoData:lemmaDict theValue:definition withKey:KEY_DEFINITION whichCameFromXpath:xPath];
   }
 
   - (void)lemmaHeading:(NSData *)data lemmaId:(NSString *)lemmaId nodeData:(NSMutableDictionary *)lemmaDict {
     NSString *xPath = [NSString stringWithFormat:@"//div[@class='analysis']//div[@id='%@']/div[@class='lemma_header']/h4", lemmaId];
     NSLog(@"xpath=%@", xPath);
     NSArray *header = [XPathResultNode nodesForXPathQuery:xPath onHTML:data];
-    [self setIntoData:lemmaDict theValue:header withKey:@"heading" whichCameFromXpath:xPath];
+    [self setIntoData:lemmaDict theValue:header withKey:KEY_HEADING whichCameFromXpath:xPath];
   }
 
   - (void)setIntoData:(NSMutableDictionary *)nodeData theValue:(NSArray *)value withKey:(NSString *)key whichCameFromXpath:(NSString *)xPath {
@@ -258,5 +315,6 @@
     NSLog(@"Error reason was: %@", reasonStr);
     return reasonStr;
   }
+
 
 @end

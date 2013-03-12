@@ -17,7 +17,6 @@
 		655BB4A416EC64CE00E2C91D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 655BB4A316EC64CE00E2C91D /* Default@2x.png */; };
 		655BB4A616EC64CE00E2C91D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 655BB4A516EC64CE00E2C91D /* Default-568h@2x.png */; };
 		655BB4A916EC64CE00E2C91D /* OL_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB4A816EC64CE00E2C91D /* OL_ViewController.m */; };
-		655BB4AC16EC64CE00E2C91D /* OL_ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 655BB4AA16EC64CE00E2C91D /* OL_ViewController.xib */; };
 		655BB4B416EC64CF00E2C91D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BB4B316EC64CF00E2C91D /* SenTestingKit.framework */; };
 		655BB4B516EC64CF00E2C91D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BB48F16EC64CE00E2C91D /* UIKit.framework */; };
 		655BB4B616EC64CF00E2C91D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BB49116EC64CE00E2C91D /* Foundation.framework */; };
@@ -57,7 +56,6 @@
 		655BB4A516EC64CE00E2C91D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		655BB4A716EC64CE00E2C91D /* OL_ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OL_ViewController.h; sourceTree = "<group>"; };
 		655BB4A816EC64CE00E2C91D /* OL_ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OL_ViewController.m; sourceTree = "<group>"; };
-		655BB4AB16EC64CE00E2C91D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/OL_ViewController.xib; sourceTree = "<group>"; };
 		655BB4B216EC64CF00E2C91D /* OnlineLatinLookupToolTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnlineLatinLookupToolTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		655BB4B316EC64CF00E2C91D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		655BB4BB16EC64CF00E2C91D /* OnlineLatinLookupToolTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OnlineLatinLookupToolTests-Info.plist"; sourceTree = "<group>"; };
@@ -147,7 +145,6 @@
 				65CE8C9D16EDF2B100B09599 /* MainStoryboard.storyboard */,
 				655BB4A716EC64CE00E2C91D /* OL_ViewController.h */,
 				655BB4A816EC64CE00E2C91D /* OL_ViewController.m */,
-				655BB4AA16EC64CE00E2C91D /* OL_ViewController.xib */,
 				655BB49616EC64CE00E2C91D /* Supporting Files */,
 			);
 			path = OnlineLatinLookupTool;
@@ -262,7 +259,6 @@
 				655BB4A216EC64CE00E2C91D /* Default.png in Resources */,
 				655BB4A416EC64CE00E2C91D /* Default@2x.png in Resources */,
 				655BB4A616EC64CE00E2C91D /* Default-568h@2x.png in Resources */,
-				655BB4AC16EC64CE00E2C91D /* OL_ViewController.xib in Resources */,
 				65CE8C9E16EDF2B100B09599 /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,14 +328,6 @@
 				655BB49916EC64CE00E2C91D /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		655BB4AA16EC64CE00E2C91D /* OL_ViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				655BB4AB16EC64CE00E2C91D /* en */,
-			);
-			name = OL_ViewController.xib;
 			sourceTree = "<group>";
 		};
 		655BB4BC16EC64CF00E2C91D /* InfoPlist.strings */ = {
