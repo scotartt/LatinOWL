@@ -79,18 +79,19 @@
                                 </connections>
                             </searchBar>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="onE-gs-aed">
-                                <color key="color" red="0.48235294220000002" green="0.73725491759999995" blue="0.96470588450000005" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="color" red="0.0" green="0.25097998980000003" blue="0.50196099279999995" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Fnc-5L-EWY" firstAttribute="bottom" secondItem="Hsx-55-LgT" secondAttribute="bottom" type="default" id="30g-S6-a4f"/>
-                            <constraint firstItem="onE-gs-aed" firstAttribute="centerX" secondItem="Mk7-fF-CXM" secondAttribute="centerX" type="default" id="5g6-qB-Gj9"/>
+                            <constraint firstItem="onE-gs-aed" firstAttribute="trailing" secondItem="Hsx-55-LgT" secondAttribute="trailing" type="default" id="5eQ-vq-0xM"/>
                             <constraint firstItem="Mk7-fF-CXM" firstAttribute="top" secondItem="Hsx-55-LgT" secondAttribute="top" type="default" id="8yz-Oa-fce"/>
                             <constraint firstItem="Fnc-5L-EWY" firstAttribute="top" secondItem="Mk7-fF-CXM" secondAttribute="bottom" type="default" id="DxM-Rs-ajB"/>
-                            <constraint firstItem="onE-gs-aed" firstAttribute="top" secondItem="Hsx-55-LgT" secondAttribute="top" constant="53" id="N4I-vb-9iG"/>
+                            <constraint firstItem="onE-gs-aed" firstAttribute="centerY" secondItem="Hsx-55-LgT" secondAttribute="centerY" type="default" id="I4j-Kw-JEq"/>
                             <constraint firstItem="Fnc-5L-EWY" firstAttribute="trailing" secondItem="Hsx-55-LgT" secondAttribute="trailing" type="default" id="Ron-DL-Jhr"/>
                             <constraint firstItem="Fnc-5L-EWY" firstAttribute="leading" secondItem="Hsx-55-LgT" secondAttribute="leading" type="default" id="SFK-WR-x80"/>
+                            <constraint firstItem="onE-gs-aed" firstAttribute="leading" secondItem="Hsx-55-LgT" secondAttribute="leading" type="default" id="Tsg-2j-93T"/>
                             <constraint firstItem="Mk7-fF-CXM" firstAttribute="trailing" secondItem="Hsx-55-LgT" secondAttribute="trailing" type="default" id="jVr-Re-qA7"/>
                             <constraint firstItem="Mk7-fF-CXM" firstAttribute="leading" secondItem="Hsx-55-LgT" secondAttribute="leading" type="default" id="ovj-Kz-HJh"/>
                         </constraints>
