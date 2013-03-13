@@ -28,6 +28,8 @@
 		655BB4D416EC747C00E2C91D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB4D316EC747C00E2C91D /* Reachability.m */; };
 		655BB4D616EC74AC00E2C91D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BB4D516EC74AC00E2C91D /* SystemConfiguration.framework */; };
 		65CE8C9E16EDF2B100B09599 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65CE8C9D16EDF2B100B09599 /* MainStoryboard.storyboard */; };
+		65D1C6B716F092870071E010 /* OL_LemmaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D1C6B616F092870071E010 /* OL_LemmaTableViewCell.m */; };
+		65D1C6BA16F096B10071E010 /* OL_MorphDefinitionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D1C6B916F096B10071E010 /* OL_MorphDefinitionCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,11 @@
 		655BB4D316EC747C00E2C91D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		655BB4D516EC74AC00E2C91D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		65CE8C9D16EDF2B100B09599 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		65D1C6B516F092870071E010 /* OL_LemmaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OL_LemmaTableViewCell.h; sourceTree = "<group>"; };
+		65D1C6B616F092870071E010 /* OL_LemmaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OL_LemmaTableViewCell.m; sourceTree = "<group>"; };
+		65D1C6B816F096B10071E010 /* OL_MorphDefinitionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OL_MorphDefinitionCell.h; sourceTree = "<group>"; };
+		65D1C6B916F096B10071E010 /* OL_MorphDefinitionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OL_MorphDefinitionCell.m; sourceTree = "<group>"; };
+		83146670FAADC4ECFF743838 /* OL_LatinMorphDataObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OL_LatinMorphDataObserver.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +115,7 @@
 				655BB4B916EC64CF00E2C91D /* OnlineLatinLookupToolTests */,
 				655BB48E16EC64CE00E2C91D /* Frameworks */,
 				655BB48D16EC64CE00E2C91D /* Products */,
+				83146670FAADC4ECFF743838 /* OL_LatinMorphDataObserver.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -143,9 +151,13 @@
 				655BB49E16EC64CE00E2C91D /* OL_AppDelegate.h */,
 				655BB49F16EC64CE00E2C91D /* OL_AppDelegate.m */,
 				65CE8C9D16EDF2B100B09599 /* MainStoryboard.storyboard */,
+				65D1C6B816F096B10071E010 /* OL_MorphDefinitionCell.h */,
+				65D1C6B916F096B10071E010 /* OL_MorphDefinitionCell.m */,
 				655BB4A716EC64CE00E2C91D /* OL_ViewController.h */,
 				655BB4A816EC64CE00E2C91D /* OL_ViewController.m */,
 				655BB49616EC64CE00E2C91D /* Supporting Files */,
+				65D1C6B516F092870071E010 /* OL_LemmaTableViewCell.h */,
+				65D1C6B616F092870071E010 /* OL_LemmaTableViewCell.m */,
 			);
 			path = OnlineLatinLookupTool;
 			sourceTree = "<group>";
@@ -300,6 +312,8 @@
 				655BB4CC16EC651300E2C91D /* XPathResultNode.m in Sources */,
 				655BB4CF16EC659200E2C91D /* OL_LatinMorphData.m in Sources */,
 				655BB4D416EC747C00E2C91D /* Reachability.m in Sources */,
+				65D1C6B716F092870071E010 /* OL_LemmaTableViewCell.m in Sources */,
+				65D1C6BA16F096B10071E010 /* OL_MorphDefinitionCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

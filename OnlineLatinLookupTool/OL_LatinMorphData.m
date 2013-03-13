@@ -9,12 +9,13 @@
 #import "OL_LatinMorphData.h"
 #import "OL_ViewController.h"
 #import "XPathResultNode.h"
+#import "OL_LatinMorphDataObserver.h"
 
 @implementation OL_LatinMorphData
   @synthesize responseData;
   @synthesize urlConnection;
   @synthesize definitions;
-  @synthesize viewController;
+  @synthesize observer;
   @synthesize theURL;
   @synthesize urlString;
   @synthesize lemmas;
@@ -26,8 +27,9 @@
     self.urlConnection = nil;
     return self;
   }
-  - (void)searchLatin:(NSString *)latinSearchTerm withController:(OL_ViewController *)controller {
-    self.viewController = controller;
+
+  - (void)searchLatin:(NSString *)latinSearchTerm withController:(<OL_LatinMorphDataObserver>)observer {
+    self.observer = observer;
     self.urlString = [NSString stringWithFormat:@"%@morph?la=la&l=%@", hopperBase, latinSearchTerm];
     NSLog(@"url = %@", self.urlString);
     NSURL *aUrl = [NSURL URLWithString:self.urlString];
@@ -40,7 +42,7 @@
     NSDictionary *lemmaDict = [self.definitions objectForKey:lemmaId];
     NSArray *definitionNodes = [lemmaDict objectForKey:KEY_DEFINITION];
     NSLog(@"%@=%@", KEY_DEFINITION, definitionNodes);
-    NSMutableString *meaning = [NSMutableString stringWithString:@"-- "];
+    NSMutableString *meaning = [NSMutableString string];
     for (XPathResultNode *definition in definitionNodes) {
       [meaning appendString:[definition contentString]];
     }
@@ -103,7 +105,7 @@
   }
 
   - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    [self.viewController showError:error forConnection:connection];
+    [self.observer showError:error forConnection:connection];
   }
 
   - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -113,7 +115,7 @@
                                                encoding:NSUTF8StringEncoding];
     NSLog(@"Data = %@", content);
     [self populateLemmaData:self.responseData];
-    [viewController refreshViewData:self];
+    [self.observer refreshViewData:self];
 
   }
 
@@ -136,8 +138,8 @@
       [userInfo setObject:reasonStr
                    forKey:@"message"];
       NSException *exception = [NSException exceptionWithName:@"NoLemmataPresent" reason:reasonStr userInfo:userInfo];
-      if (viewController != nil) {
-        [viewController showError:exception
+      if (self.observer != nil) {
+        [self.observer showError:exception
                     forSearchTerm:self.urlString];
       } else {
         @throw exception;

@@ -16,11 +16,11 @@
   - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-      
+
     self.storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard"
-                                                    bundle:nil];
+                                                bundle:nil];
     self.viewController = (OL_ViewController *) [self.storyBoard instantiateViewControllerWithIdentifier:@"OL_ViewController"];
-      
+
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     [self startReach];
@@ -54,7 +54,7 @@
       NSLog(@"Perseus network status changed: now %@", [self stringFromStatus:status]);
       if (status == NotReachable) {
         self.netAlert = [[UIAlertView alloc] initWithTitle:@"Perseus Alert"
-                                              message:@"perseus.tufts.edu is not reachable." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                                   message:@"perseus.tufts.edu is not reachable." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [self.netAlert show];
       } else if (netAlert != nil && netAlert.visible == YES) {
         NSLog(@"Dismissing stale network alert: %@", netAlert.title);

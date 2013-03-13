@@ -7,8 +7,8 @@
 //
 
 #import "OL_ViewController.h"
-#import "OL_AppDelegate.h"
-#import "XPathResultNode.h"
+#import "OL_LemmaTableViewCell.h"
+#import "OL_MorphDefinitionCell.h"
 
 @interface OL_ViewController ()
 
@@ -39,7 +39,6 @@
     [self setLatinMorphData:latinMorph];
     [self.activityIndicator stopAnimating];
     [self.tableView reloadData];
-
   }
 
   - (void)showError:(NSError *)error forConnection:(NSURLConnection *)connection {
@@ -62,7 +61,7 @@
 
   - (void)handleSearch:(UISearchBar *)searchBar {
     [self.activityIndicator startAnimating];
-    [self.tableView setHidden:NO];
+    [self.tableView setHidden:YES];
     // clear the table
     OL_LatinMorphData *searchLatinMorphData = [[[OL_LatinMorphData alloc] init] reset];
     [self.tableView reloadData];
@@ -74,6 +73,7 @@
 
   - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     NSLog(@"User canceled search");
+    [searchBar setText:@""];
     [searchBar resignFirstResponder]; // keyboard go away
     [self.activityIndicator stopAnimating];
 
@@ -104,12 +104,12 @@
   }
 
 
-  - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSLog(@"called titleForHeaderInSection:%d", section);
-    // The header for the section is the region name -- get this from the region at the section index.
-    NSString *lemmaId = [self getLemmaIdForSection:(NSUInteger) section];
-    return [self.latinMorphData theHeaderString:lemmaId];
-  }
+//  - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//    NSLog(@"called titleForHeaderInSection:%d", section);
+//    // The header for the section is the region name -- get this from the region at the section index.
+//    NSString *lemmaId = [self getLemmaIdForSection:(NSUInteger) section];
+//    return [self.latinMorphData theHeaderString:lemmaId];
+//  }
 
   - (NSString *)getLemmaIdForSection:(NSUInteger)section {
     NSString *lemmaId = [[[self latinMorphData] lemmas] objectAtIndex:section];
@@ -123,38 +123,44 @@
     NSString *lemmaId = [[[self latinMorphData] lemmas] objectAtIndex:section];
     NSLog(@"called cellForRowAtIndexPath:%d,%d %@", section, row, lemmaId);
     if (row == 0) {
-      NSString *cellIdentifier = @"LemmaDefCellIdentifier";
-      UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+      NSString *cellIdentifier = @"LemmaTableCell";
+      OL_LemmaTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
       if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[OL_LemmaTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
       }
-      NSString *meaning = [self.latinMorphData theMeaning:lemmaId];
-      UILabel *label = [cell textLabel];
-      [label setText:meaning];
-      [label setAdjustsFontSizeToFitWidth:YES];
-      [label setFont:[UIFont italicSystemFontOfSize:[UIFont smallSystemFontSize]]];
+
+      NSString *titleText = [self.latinMorphData theHeaderString:lemmaId];
+      UILabel *titleLabel = [cell lemmaTitle];
+      [titleLabel setText:titleText];
+
+      NSString *meaningText = [self.latinMorphData theMeaning:lemmaId];
+      UILabel *meaningCell = [cell lemmaMeaning];
+      [meaningCell setText:meaningText];
+      //[meaningCell setAdjustsFontSizeToFitWidth:YES];
+
       return cell;
     } else if (row < [self tableView:tableView numberOfRowsInSection:section]) {
-      NSString *cellIdentifier = @"LatinCellIdentifier";
-      UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+      NSString *cellIdentifier = @"MorphTableCell";
+      OL_MorphDefinitionCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
       if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[OL_MorphDefinitionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
       }
-      int indexId = row - 1; // the meaning of the lemma is at the first position.
+      [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+      int indexId = row - 1; // the meaning of the lemma is at the first cell position, therefore subtract one from the row number.
       NSString *form = [self.latinMorphData theForm:lemmaId ofIndex:indexId];
       NSString *parsed = [self.latinMorphData theFormParsed:lemmaId ofIndex:indexId];
       if (form == nil || parsed == nil || [form isEqualToString:@""] || [parsed isEqualToString:@""]) {
-        return [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"empty"];
+        return cell;
       }
-      UILabel *label = [cell textLabel];
-      NSString *labelText = [NSString stringWithFormat:@"%@ (%@)", form, parsed];
-      [label setText:labelText];
-      [label setAdjustsFontSizeToFitWidth:YES];
-      [label setFont:[UIFont systemFontOfSize:[UIFont labelFontSize]]];
+      UILabel *morphTitleLabel = [cell morphTitle];
+      [morphTitleLabel setText:form];
+
+      UILabel *morphParsing = [cell morphParsing];
+      [morphParsing setText:parsed];
       return cell;
-    } else {
-      return [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"empty"];
-    }
+    } // else {
+//      return [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"empty"];
+//    }
   }
 
 

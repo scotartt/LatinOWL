@@ -8,18 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "OL_LatinMorphData.h"
+#import "OL_LatinMorphDataObserver.h"
 
-@interface OL_ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
+@interface OL_ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, OL_LatinMorphDataObserver>
 
   @property(weak, nonatomic) IBOutlet UISearchBar *searchBar;
   @property(weak, nonatomic) IBOutlet UITableView *tableView;
   @property(strong, nonatomic) NSString *searchText;
-  @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+  @property(weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
   @property(nonatomic, strong) UILabel *label;
 
 
-  - (void)refreshViewData:(OL_LatinMorphData *)latinMorph;
-  - (void)showError:(NSError *)error forConnection:(NSURLConnection *)connection;
-  - (void)showError:(NSException *)exception forSearchTerm:(NSString *)searchTerm;
+
 
 @end

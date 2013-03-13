@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class OL_ViewController;
+@protocol OL_LatinMorphDataObserver;
 
 static NSString *const hopperBase = @"http://www.perseus.tufts.edu/hopper/";
 
@@ -19,20 +20,26 @@ static NSString *const KEY_LEXICON = @"lexicon";
 
 @interface OL_LatinMorphData : NSObject <NSURLConnectionDelegate>
 
-  @property(nonatomic, strong) OL_ViewController *viewController;
-  @property(nonatomic, strong) NSURL *theURL;
-  @property(nonatomic, strong) NSString *urlString;
+  @property(nonatomic, weak) <OL_LatinMorphDataObserver> observer;
+  @property(nonatomic, weak) NSURL *theURL;
+  @property(nonatomic, weak) NSString *urlString;
   @property(nonatomic, strong) NSMutableData *responseData;
-  @property(nonatomic, strong) NSURLConnection *urlConnection;
+  @property(nonatomic, weak) NSURLConnection *urlConnection;
   @property(nonatomic, strong) NSMutableDictionary *definitions;
   @property(nonatomic, strong) NSArray *lemmas;
 
-  - (void)searchLatin:(NSString *)latinSearchTerm withController:(OL_ViewController *)viewController;
+  - (void)searchLatin:(NSString *)latinSearchTerm withController:(<OL_LatinMorphDataObserver>)observer;
+
   - (NSArray *)getAnalysis:(NSData *)data;
+
   - (void)populateLemmaData:(NSData *)data;
+
   - (NSString *)theMeaning:(NSString *)lemmaId;
+
   - (NSString *)theHeaderString:(NSString *)lemmaId;
+
   - (NSString *)theForm:(NSString *)lemmaId ofIndex:(int)index;
+
   - (NSString *)theFormParsed:(NSString *)lemmaId ofIndex:(int)index;
 
   - (OL_LatinMorphData *)reset;
