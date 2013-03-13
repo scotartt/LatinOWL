@@ -20,15 +20,15 @@ static NSString *const KEY_LEXICON = @"lexicon";
 
 @interface OL_LatinMorphData : NSObject <NSURLConnectionDelegate>
 
-  @property(nonatomic, weak) <OL_LatinMorphDataObserver> observer;
-  @property(nonatomic, weak) NSURL *theURL;
-  @property(nonatomic, weak) NSString *urlString;
+  @property(nonatomic, weak) id <OL_LatinMorphDataObserver> observer;
+  @property(nonatomic, strong) NSURL *theURL;
+  @property(nonatomic, strong) NSString *urlString;
   @property(nonatomic, strong) NSMutableData *responseData;
-  @property(nonatomic, weak) NSURLConnection *urlConnection;
+  @property(nonatomic, strong) NSURLConnection *urlConnection;
   @property(nonatomic, strong) NSMutableDictionary *definitions;
   @property(nonatomic, strong) NSArray *lemmas;
 
-  - (void)searchLatin:(NSString *)latinSearchTerm withController:(<OL_LatinMorphDataObserver>)observer;
+  - (void)searchLatin:(NSString *)latinSearchTerm withController:(id <OL_LatinMorphDataObserver>)observer;
 
   - (NSArray *)getAnalysis:(NSData *)data;
 

@@ -158,9 +158,9 @@
       UILabel *morphParsing = [cell morphParsing];
       [morphParsing setText:parsed];
       return cell;
-    } // else {
-//      return [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"empty"];
-//    }
+    }  else {
+      return [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"empty"];
+    }
   }
 
 

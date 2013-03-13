@@ -9,7 +9,6 @@
 #import "OL_LatinMorphData.h"
 #import "OL_ViewController.h"
 #import "XPathResultNode.h"
-#import "OL_LatinMorphDataObserver.h"
 
 @implementation OL_LatinMorphData
   @synthesize responseData;
@@ -28,8 +27,8 @@
     return self;
   }
 
-  - (void)searchLatin:(NSString *)latinSearchTerm withController:(<OL_LatinMorphDataObserver>)observer {
-    self.observer = observer;
+  - (void)searchLatin:(NSString *)latinSearchTerm withController:(id <OL_LatinMorphDataObserver>)theObserver {
+    self.observer = theObserver;
     self.urlString = [NSString stringWithFormat:@"%@morph?la=la&l=%@", hopperBase, latinSearchTerm];
     NSLog(@"url = %@", self.urlString);
     NSURL *aUrl = [NSURL URLWithString:self.urlString];
