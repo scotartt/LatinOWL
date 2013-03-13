@@ -111,8 +111,8 @@
 			children = (
 				655BB4D516EC74AC00E2C91D /* SystemConfiguration.framework */,
 				655BB4D016EC65B300E2C91D /* libxml2.dylib */,
-				655BB49516EC64CE00E2C91D /* OnlineLatinLookupTool */,
-				655BB4B916EC64CF00E2C91D /* OnlineLatinLookupToolTests */,
+				655BB49516EC64CE00E2C91D /* LatinOnlineWordLookup */,
+				655BB4B916EC64CF00E2C91D /* LatinOnlineWordLookup */,
 				655BB48E16EC64CE00E2C91D /* Frameworks */,
 				655BB48D16EC64CE00E2C91D /* Products */,
 			);
@@ -138,7 +138,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		655BB49516EC64CE00E2C91D /* OnlineLatinLookupTool */ = {
+		655BB49516EC64CE00E2C91D /* LatinOnlineWordLookup */ = {
 			isa = PBXGroup;
 			children = (
 				83146670FAADC4ECFF743838 /* OL_LatinMorphDataObserver.h */,
@@ -159,6 +159,7 @@
 				65D1C6B516F092870071E010 /* OL_LemmaTableViewCell.h */,
 				65D1C6B616F092870071E010 /* OL_LemmaTableViewCell.m */,
 			);
+			name = LatinOnlineWordLookup;
 			path = OnlineLatinLookupTool;
 			sourceTree = "<group>";
 		};
@@ -176,13 +177,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		655BB4B916EC64CF00E2C91D /* OnlineLatinLookupToolTests */ = {
+		655BB4B916EC64CF00E2C91D /* LatinOnlineWordLookup */ = {
 			isa = PBXGroup;
 			children = (
 				655BB4BF16EC64CF00E2C91D /* OnlineLatinLookupToolTests.h */,
 				655BB4C016EC64CF00E2C91D /* OnlineLatinLookupToolTests.m */,
 				655BB4BA16EC64CF00E2C91D /* Supporting Files */,
 			);
+			name = LatinOnlineWordLookup;
 			path = OnlineLatinLookupToolTests;
 			sourceTree = "<group>";
 		};
