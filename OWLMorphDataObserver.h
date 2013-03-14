@@ -5,8 +5,8 @@
 //
 
 
-@protocol OL_LatinMorphDataObserver <NSObject>
-  - (void)refreshViewData:(OL_LatinMorphData *)latinMorph;
+@protocol OWLMorphDataObserver <NSObject>
+  - (void)refreshViewData:(OWLMorphData *)latinMorph;
 
   - (void)showError:(NSError *)error forConnection:(NSURLConnection *)connection;
 

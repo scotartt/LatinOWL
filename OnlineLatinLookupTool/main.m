@@ -6,10 +6,15 @@
 //  Copyright (c) 2013 Scot Mcphee. All rights reserved.
 //
 
-#import "OL_AppDelegate.h"
+#import "OWLAppDelegate.h"
 
 int main(int argc, char *argv[]) {
-  @autoreleasepool {
-    return UIApplicationMain(argc, argv, nil, NSStringFromClass([OL_AppDelegate class]));
-  }
+    @autoreleasepool {
+        @try {
+            return UIApplicationMain(argc, argv, nil, NSStringFromClass([OWLAppDelegate class]));
+        } @catch (NSException *ex) {
+            NSLog(@"An uncaught exception in 'main' - %@", ex);
+            @throw ex;
+        }
+    }
 }

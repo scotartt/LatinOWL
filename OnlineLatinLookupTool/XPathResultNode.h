@@ -26,26 +26,25 @@
 //
 
 @interface XPathResultNode : NSObject {
-    NSString *name;
-    NSMutableDictionary *attributes;
-    NSMutableArray *content;
-  }
+        NSString *name;
+        NSMutableDictionary *attributes;
+        NSMutableArray *content;
+    }
 
-  @property(nonatomic, strong, readonly) NSString *name;
-  @property(nonatomic, strong, readonly) NSMutableDictionary *attributes;
-  @property(nonatomic, strong, readonly) NSMutableArray *content;
+    @property(nonatomic, strong, readonly) NSString *name;
+    @property(nonatomic, strong, readonly) NSMutableDictionary *attributes;
+    @property(nonatomic, strong, readonly) NSMutableArray *content;
 
-  + (NSArray *)nodesForXPathQuery:(NSString *)query onHTML:(NSData *)htmlData;
+    + (NSArray *)nodesForXPathQuery:(NSString *)query onHTML:(NSData *)htmlData;
 
-  + (NSArray *)nodesForXPathQuery:(NSString *)query onXML:(NSData *)xmlData;
+    + (NSArray *)nodesForXPathQuery:(NSString *)query onXML:(NSData *)xmlData;
 
-  - (NSArray *)childNodes;
+    - (NSArray *)childNodes;
 
-  - (NSString *)contentString;
+    - (NSString *)contentString;
 
-  - (NSString *)contentStringByUnifyingSubnodes;
+    - (NSString *)contentStringByUnifyingSubnodes;
 
-  - (NSString *)contentStringByUnifyingSubnodesWithSeparator:(NSString *)separator;
-
+    - (NSString *)contentStringByUnifyingSubnodesWithSeparator:(NSString *)separator;
 
 @end

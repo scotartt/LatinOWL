@@ -7,7 +7,7 @@
 //
 
 #import "OnlineLatinLookupToolTests.h"
-#import "OL_ViewController.h"
+#import "OWLSearchViewController.h"
 #import "XPathResultNode.h"
 
 @implementation OnlineLatinLookupToolTests
@@ -17,8 +17,8 @@
 
   - (void)setUp {
     [super setUp];
-    controller = [[OL_ViewController alloc] init];
-    latinData = [[OL_LatinMorphData alloc] init];
+    controller = [[OWLSearchViewController alloc] init];
+    latinData = [[OWLMorphData alloc] init];
   }
 
   - (void)tearDown {
@@ -200,7 +200,7 @@
 
 #pragma Helper methods
 
-  - (NSData *)getData:(OL_LatinMorphData *)theLatinData withLatin:(NSString *)latinWord {
+  - (NSData *)getData:(OWLMorphData *)theLatinData withLatin:(NSString *)latinWord {
     [theLatinData searchLatin:latinWord withController:controller];
     NSURLConnection *connection = theLatinData.urlConnection;
     NSURLRequest *request = connection.currentRequest;

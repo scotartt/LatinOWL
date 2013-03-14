@@ -42,17 +42,19 @@
 
 @interface XPathResultNode ()
 
-  @property(nonatomic, strong) NSString *name;
-  @property(nonatomic, strong) NSMutableDictionary *attributes;
-  @property(nonatomic, strong) NSMutableArray *content;
+    @property(nonatomic, strong) NSString *name;
+    @property(nonatomic, strong) NSMutableDictionary *attributes;
+    @property(nonatomic, strong) NSMutableArray *content;
 
 @end
 
+
 @implementation XPathResultNode
 
-  @synthesize name;
-  @synthesize attributes;
-  @synthesize content;
+    @synthesize name;
+    @synthesize attributes;
+    @synthesize content;
+
 
 //
 // description
@@ -65,26 +67,27 @@
 //
 // returns the string representation
 //
-  - (NSString *)description {
-    NSMutableString *description = [NSMutableString string];
-    [description appendFormat:@"<%@", name];
-    for (NSString *attributeName in attributes) {
-      NSString *attributeValue = [attributes objectForKey:attributeName];
-      [description appendFormat:@" %@=\"%@\"", attributeName, attributeValue];
+    - (NSString *)description {
+        NSMutableString *description = [NSMutableString string];
+        [description appendFormat:@"<%@", name];
+        for (NSString *attributeName in attributes) {
+            NSString *attributeValue = [attributes objectForKey:attributeName];
+            [description appendFormat:@" %@=\"%@\"", attributeName, attributeValue];
+        }
+
+        if ([content count] > 0) {
+            [description appendString:@">"];
+            for (id object in content) {
+                [description appendString:[object description]];
+            }
+            [description appendFormat:@"</%@>", name];
+        }
+        else {
+            [description appendString:@"/>"];
+        }
+        return description;
     }
 
-    if ([content count] > 0) {
-      [description appendString:@">"];
-      for (id object in content) {
-        [description appendString:[object description]];
-      }
-      [description appendFormat:@"</%@>", name];
-    }
-    else {
-      [description appendString:@"/>"];
-    }
-    return description;
-  }
 
 //
 // nodefromLibXMLNode:parentNode:
@@ -102,79 +105,80 @@
 //
 // returns the node (or nil if libXMLNode is just a text node) 
 //
-  + (XPathResultNode *)nodefromLibXMLNode:(xmlNodePtr)libXMLNode parentNode:(XPathResultNode *)parentNode {
-    XPathResultNode *node = [[XPathResultNode alloc] init];
+    + (XPathResultNode *)nodefromLibXMLNode:(xmlNodePtr)libXMLNode parentNode:(XPathResultNode *)parentNode {
+        XPathResultNode *node = [[XPathResultNode alloc] init];
 
-    if (libXMLNode->name) {
-      node.name = [NSString stringWithCString:(const char *) libXMLNode->name encoding:NSUTF8StringEncoding];
-    }
-
-    if (libXMLNode->content && libXMLNode->type != XML_DOCUMENT_TYPE_NODE) {
-      NSString *contentString =
-          [NSString stringWithCString:(const char *) libXMLNode->content encoding:NSUTF8StringEncoding];
-
-      if (parentNode &&
-          (libXMLNode->type == XML_CDATA_SECTION_NODE || libXMLNode->type == XML_TEXT_NODE)) {
-        if (libXMLNode->type == XML_TEXT_NODE) {
-          contentString = [contentString
-              stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        if (libXMLNode->name) {
+            node.name = [NSString stringWithCString:(const char *) libXMLNode->name encoding:NSUTF8StringEncoding];
         }
 
-        if (!parentNode.content) {
-          parentNode.content = [NSMutableArray arrayWithObject:contentString];
-        }
-        else {
-          [parentNode.content addObject:contentString];
-        }
-        return nil;
-      }
-    }
+        if (libXMLNode->content && libXMLNode->type != XML_DOCUMENT_TYPE_NODE) {
+            NSString *contentString =
+              [NSString stringWithCString:(const char *) libXMLNode->content encoding:NSUTF8StringEncoding];
 
-    xmlAttr *attribute = libXMLNode->properties;
-    if (attribute) {
-      while (attribute) {
-        NSString *attributeName = nil;
-        NSString *attributeValue = nil;
+            if (parentNode &&
+              (libXMLNode->type == XML_CDATA_SECTION_NODE || libXMLNode->type == XML_TEXT_NODE)) {
+                if (libXMLNode->type == XML_TEXT_NODE) {
+                    contentString = [contentString
+                      stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                }
 
-        if (attribute->name && attribute->children && attribute->children->type == XML_TEXT_NODE && attribute->children->content) {
-          attributeName =
-              [NSString stringWithCString:(const char *) attribute->name encoding:NSUTF8StringEncoding];
-          attributeValue =
-              [NSString stringWithCString:(const char *) attribute->children->content encoding:NSUTF8StringEncoding];
-
-          if (attributeName && attributeValue) {
-            if (!node.attributes) {
-              node.attributes = [NSMutableDictionary dictionaryWithObject:attributeValue forKey:attributeName];
+                if (!parentNode.content) {
+                    parentNode.content = [NSMutableArray arrayWithObject:contentString];
+                }
+                else {
+                    [parentNode.content addObject:contentString];
+                }
+                return nil;
             }
-            else {
-              [node.attributes setObject:attributeValue forKey:attributeName];
+        }
+
+        xmlAttr *attribute = libXMLNode->properties;
+        if (attribute) {
+            while (attribute) {
+                NSString *attributeName = nil;
+                NSString *attributeValue = nil;
+
+                if (attribute->name && attribute->children && attribute->children->type == XML_TEXT_NODE && attribute->children->content) {
+                    attributeName =
+                      [NSString stringWithCString:(const char *) attribute->name encoding:NSUTF8StringEncoding];
+                    attributeValue =
+                      [NSString stringWithCString:(const char *) attribute->children->content encoding:NSUTF8StringEncoding];
+
+                    if (attributeName && attributeValue) {
+                        if (!node.attributes) {
+                            node.attributes = [NSMutableDictionary dictionaryWithObject:attributeValue forKey:attributeName];
+                        }
+                        else {
+                            [node.attributes setObject:attributeValue forKey:attributeName];
+                        }
+                    }
+                }
+
+                attribute = attribute->next;
             }
-          }
         }
 
-        attribute = attribute->next;
-      }
-    }
+        xmlNodePtr childLibXMLNode = libXMLNode->children;
+        if (childLibXMLNode) {
+            while (childLibXMLNode) {
+                XPathResultNode *childNode = [XPathResultNode nodefromLibXMLNode:childLibXMLNode parentNode:node];
+                if (childNode) {
+                    if (!node.content) {
+                        node.content = [NSMutableArray arrayWithObject:childNode];
+                    }
+                    else {
+                        [node.content addObject:childNode];
+                    }
+                }
 
-    xmlNodePtr childLibXMLNode = libXMLNode->children;
-    if (childLibXMLNode) {
-      while (childLibXMLNode) {
-        XPathResultNode *childNode = [XPathResultNode nodefromLibXMLNode:childLibXMLNode parentNode:node];
-        if (childNode) {
-          if (!node.content) {
-            node.content = [NSMutableArray arrayWithObject:childNode];
-          }
-          else {
-            [node.content addObject:childNode];
-          }
+                childLibXMLNode = childLibXMLNode->next;
+            }
         }
 
-        childLibXMLNode = childLibXMLNode->next;
-      }
+        return node;
     }
 
-    return node;
-  }
 
 //
 // nodesForXPathQuery:onLibXMLDoc:
@@ -188,44 +192,45 @@
 //
 // returns the array of nodes matching the XPath query
 //
-  + (NSArray *)nodesForXPathQuery:(NSString *)query onLibXMLDoc:(xmlDocPtr)doc {
-    xmlXPathContextPtr xpathCtx;
-    xmlXPathObjectPtr xpathObj;
+    + (NSArray *)nodesForXPathQuery:(NSString *)query onLibXMLDoc:(xmlDocPtr)doc {
+        xmlXPathContextPtr xpathCtx;
+        xmlXPathObjectPtr xpathObj;
 
-    /* Create xpath evaluation context */
-    xpathCtx = xmlXPathNewContext(doc);
-    if (xpathCtx == NULL) {
-      NSLog(@"Unable to create XPath context.");
-      return nil;
+        /* Create xpath evaluation context */
+        xpathCtx = xmlXPathNewContext(doc);
+        if (xpathCtx == NULL) {
+            NSLog(@"Unable to create XPath context.");
+            return nil;
+        }
+
+        /* Evaluate xpath expression */
+        xpathObj = xmlXPathEvalExpression((xmlChar *) [query cStringUsingEncoding:NSUTF8StringEncoding], xpathCtx);
+        if (xpathObj == NULL) {
+            NSLog(@"Unable to evaluate XPath.");
+            return nil;
+        }
+
+        xmlNodeSetPtr nodes = xpathObj->nodesetval;
+        if (!nodes) {
+            NSLog(@"Nodes was nil.");
+            return nil;
+        }
+
+        NSMutableArray *resultNodes = [NSMutableArray array];
+        for (NSInteger i = 0; i < nodes->nodeNr; i++) {
+            XPathResultNode *node = [XPathResultNode nodefromLibXMLNode:nodes->nodeTab[i] parentNode:nil];
+            if (node) {
+                [resultNodes addObject:node];
+            }
+        }
+
+        /* Cleanup */
+        xmlXPathFreeObject(xpathObj);
+        xmlXPathFreeContext(xpathCtx);
+
+        return resultNodes;
     }
 
-    /* Evaluate xpath expression */
-    xpathObj = xmlXPathEvalExpression((xmlChar *) [query cStringUsingEncoding:NSUTF8StringEncoding], xpathCtx);
-    if (xpathObj == NULL) {
-      NSLog(@"Unable to evaluate XPath.");
-      return nil;
-    }
-
-    xmlNodeSetPtr nodes = xpathObj->nodesetval;
-    if (!nodes) {
-      NSLog(@"Nodes was nil.");
-      return nil;
-    }
-
-    NSMutableArray *resultNodes = [NSMutableArray array];
-    for (NSInteger i = 0; i < nodes->nodeNr; i++) {
-      XPathResultNode *node = [XPathResultNode nodefromLibXMLNode:nodes->nodeTab[i] parentNode:nil];
-      if (node) {
-        [resultNodes addObject:node];
-      }
-    }
-
-    /* Cleanup */
-    xmlXPathFreeObject(xpathObj);
-    xmlXPathFreeContext(xpathCtx);
-
-    return resultNodes;
-  }
 
 //
 // nodesForXPathQuery:onHTML:
@@ -239,22 +244,23 @@
 //
 // returns the array of nodes matching the XPath query
 //
-  + (NSArray *)nodesForXPathQuery:(NSString *)query onHTML:(NSData *)htmlData {
-    xmlDocPtr doc;
+    + (NSArray *)nodesForXPathQuery:(NSString *)query onHTML:(NSData *)htmlData {
+        xmlDocPtr doc;
 
-    /* Load XML document */
-    doc = htmlReadMemory([htmlData bytes], [htmlData length], "", NULL, HTML_PARSE_NOWARNING | HTML_PARSE_NOERROR);
+        /* Load XML document */
+        doc = htmlReadMemory([htmlData bytes], [htmlData length], "", NULL, HTML_PARSE_NOWARNING | HTML_PARSE_NOERROR);
 
-    if (doc == NULL) {
-      NSLog(@"Unable to parse.");
-      return nil;
+        if (doc == NULL) {
+            NSLog(@"Unable to parse.");
+            return nil;
+        }
+
+        NSArray *result = [XPathResultNode nodesForXPathQuery:query onLibXMLDoc:doc];
+        xmlFreeDoc(doc);
+
+        return result;
     }
 
-    NSArray *result = [XPathResultNode nodesForXPathQuery:query onLibXMLDoc:doc];
-    xmlFreeDoc(doc);
-
-    return result;
-  }
 
 //
 // nodesForXPathQuery:onXML:
@@ -268,39 +274,41 @@
 //
 // returns the array of nodes matching the XPath query
 //
-  + (NSArray *)nodesForXPathQuery:(NSString *)query onXML:(NSData *)xmlData {
-    xmlDocPtr doc;
+    + (NSArray *)nodesForXPathQuery:(NSString *)query onXML:(NSData *)xmlData {
+        xmlDocPtr doc;
 
-    /* Load XML document */
-    doc = xmlReadMemory([xmlData bytes], [xmlData length], "", NULL, XML_PARSE_RECOVER);
+        /* Load XML document */
+        doc = xmlReadMemory([xmlData bytes], [xmlData length], "", NULL, XML_PARSE_RECOVER);
 
-    if (doc == NULL) {
-      NSLog(@"Unable to parse.");
-      return nil;
+        if (doc == NULL) {
+            NSLog(@"Unable to parse.");
+            return nil;
+        }
+
+        NSArray *result = [XPathResultNode nodesForXPathQuery:query onLibXMLDoc:doc];
+        xmlFreeDoc(doc);
+
+        return result;
     }
 
-    NSArray *result = [XPathResultNode nodesForXPathQuery:query onLibXMLDoc:doc];
-    xmlFreeDoc(doc);
-
-    return result;
-  }
 
 //
 // childNodes
 //
 // returns an array of the child nodes from the content array (i.e. excluding text nodes)
 //
-  - (NSArray *)childNodes {
-    NSMutableArray *result = [NSMutableArray array];
+    - (NSArray *)childNodes {
+        NSMutableArray *result = [NSMutableArray array];
 
-    for (NSObject *object in content) {
-      if ([object isKindOfClass:[XPathResultNode class]]) {
-        [result addObject:object];
-      }
+        for (NSObject *object in content) {
+            if ([object isKindOfClass:[XPathResultNode class]]) {
+                [result addObject:object];
+            }
+        }
+
+        return result;
     }
 
-    return result;
-  }
 
 //
 // contentString
@@ -311,15 +319,16 @@
 //
 // returns the first string node from the content (or nil if no text nodes)
 //
-  - (NSString *)contentString {
-    for (NSObject *object in content) {
-      if ([object isKindOfClass:[NSString class]]) {
-        return (NSString *) object;
-      }
+    - (NSString *)contentString {
+        for (NSObject *object in content) {
+            if ([object isKindOfClass:[NSString class]]) {
+                return (NSString *) object;
+            }
+        }
+
+        return nil;
     }
 
-    return nil;
-  }
 
 //
 // contentStringByUnifyingSubnodes
@@ -332,34 +341,35 @@
 // returns the concatenated string (or nil if neither this nor subnodes contain
 //	text)
 //
-  - (NSString *)contentStringByUnifyingSubnodes {
-    NSMutableString *result = nil;
+    - (NSString *)contentStringByUnifyingSubnodes {
+        NSMutableString *result = nil;
 
-    for (NSObject *object in content) {
-      if ([object isKindOfClass:[NSString class]]) {
-        if (!result) {
-          result = [NSMutableString stringWithString:(NSString *) object];
-        }
-        else {
-          [result appendString:(NSString *) object];
-        }
-      }
-      else {
-        NSString *subnodeResult = [(XPathResultNode *) object contentStringByUnifyingSubnodes];
+        for (NSObject *object in content) {
+            if ([object isKindOfClass:[NSString class]]) {
+                if (!result) {
+                    result = [NSMutableString stringWithString:(NSString *) object];
+                }
+                else {
+                    [result appendString:(NSString *) object];
+                }
+            }
+            else {
+                NSString *subnodeResult = [(XPathResultNode *) object contentStringByUnifyingSubnodes];
 
-        if (subnodeResult) {
-          if (!result) {
-            result = [NSMutableString stringWithString:subnodeResult];
-          }
-          else {
-            [result appendString:subnodeResult];
-          }
+                if (subnodeResult) {
+                    if (!result) {
+                        result = [NSMutableString stringWithString:subnodeResult];
+                    }
+                    else {
+                        [result appendString:subnodeResult];
+                    }
+                }
+            }
         }
-      }
+
+        return result;
     }
 
-    return result;
-  }
 
 //
 // contentStringByUnifyingSubnodes
@@ -372,37 +382,36 @@
 // returns the concatenated string (or nil if neither this nor subnodes contain
 //	text)
 //
-  - (NSString *)contentStringByUnifyingSubnodesWithSeparator:(NSString *)separator {
-    NSMutableString *result = nil;
+    - (NSString *)contentStringByUnifyingSubnodesWithSeparator:(NSString *)separator {
+        NSMutableString *result = nil;
 
-    for (NSObject *object in content) {
-      if ([object isKindOfClass:[NSString class]]) {
-        if (!result) {
-          result = [NSMutableString stringWithString:(NSString *) object];
-        }
-        else {
-          [result appendString:separator];
-          [result appendString:(NSString *) object];
-        }
-      }
-      else {
-        NSString *subnodeResult = [(XPathResultNode *) object contentStringByUnifyingSubnodes];
+        for (NSObject *object in content) {
+            if ([object isKindOfClass:[NSString class]]) {
+                if (!result) {
+                    result = [NSMutableString stringWithString:(NSString *) object];
+                }
+                else {
+                    [result appendString:separator];
+                    [result appendString:(NSString *) object];
+                }
+            }
+            else {
+                NSString *subnodeResult = [(XPathResultNode *) object contentStringByUnifyingSubnodes];
 
-        if (subnodeResult) {
-          if (!result) {
-            result = [NSMutableString stringWithString:subnodeResult];
-          }
-          else {
-            [result appendString:separator];
-            [result appendString:subnodeResult];
-          }
+                if (subnodeResult) {
+                    if (!result) {
+                        result = [NSMutableString stringWithString:subnodeResult];
+                    }
+                    else {
+                        [result appendString:separator];
+                        [result appendString:subnodeResult];
+                    }
+                }
+            }
         }
-      }
+
+        return result;
     }
-
-    return result;
-  }
-
 
 @end
 

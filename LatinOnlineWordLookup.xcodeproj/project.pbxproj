@@ -12,24 +12,24 @@
 		655BB49416EC64CE00E2C91D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BB49316EC64CE00E2C91D /* CoreGraphics.framework */; };
 		655BB49A16EC64CE00E2C91D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 655BB49816EC64CE00E2C91D /* InfoPlist.strings */; };
 		655BB49C16EC64CE00E2C91D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB49B16EC64CE00E2C91D /* main.m */; };
-		655BB4A016EC64CE00E2C91D /* OL_AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB49F16EC64CE00E2C91D /* OL_AppDelegate.m */; };
+		655BB4A016EC64CE00E2C91D /* OWLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB49F16EC64CE00E2C91D /* OWLAppDelegate.m */; };
 		655BB4A216EC64CE00E2C91D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 655BB4A116EC64CE00E2C91D /* Default.png */; };
 		655BB4A416EC64CE00E2C91D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 655BB4A316EC64CE00E2C91D /* Default@2x.png */; };
 		655BB4A616EC64CE00E2C91D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 655BB4A516EC64CE00E2C91D /* Default-568h@2x.png */; };
-		655BB4A916EC64CE00E2C91D /* OL_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB4A816EC64CE00E2C91D /* OL_ViewController.m */; };
+		655BB4A916EC64CE00E2C91D /* OWLSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB4A816EC64CE00E2C91D /* OWLSearchViewController.m */; };
 		655BB4B416EC64CF00E2C91D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BB4B316EC64CF00E2C91D /* SenTestingKit.framework */; };
 		655BB4B516EC64CF00E2C91D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BB48F16EC64CE00E2C91D /* UIKit.framework */; };
 		655BB4B616EC64CF00E2C91D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BB49116EC64CE00E2C91D /* Foundation.framework */; };
 		655BB4BE16EC64CF00E2C91D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 655BB4BC16EC64CF00E2C91D /* InfoPlist.strings */; };
 		655BB4C116EC64CF00E2C91D /* OnlineLatinLookupToolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB4C016EC64CF00E2C91D /* OnlineLatinLookupToolTests.m */; };
 		655BB4CC16EC651300E2C91D /* XPathResultNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB4CB16EC651300E2C91D /* XPathResultNode.m */; };
-		655BB4CF16EC659200E2C91D /* OL_LatinMorphData.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB4CE16EC659200E2C91D /* OL_LatinMorphData.m */; };
+		655BB4CF16EC659200E2C91D /* OWLMorphData.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB4CE16EC659200E2C91D /* OWLMorphData.m */; };
 		655BB4D116EC65B300E2C91D /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BB4D016EC65B300E2C91D /* libxml2.dylib */; };
 		655BB4D416EC747C00E2C91D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB4D316EC747C00E2C91D /* Reachability.m */; };
 		655BB4D616EC74AC00E2C91D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BB4D516EC74AC00E2C91D /* SystemConfiguration.framework */; };
 		65CE8C9E16EDF2B100B09599 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65CE8C9D16EDF2B100B09599 /* MainStoryboard.storyboard */; };
-		65D1C6B716F092870071E010 /* OL_LemmaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D1C6B616F092870071E010 /* OL_LemmaTableViewCell.m */; };
-		65D1C6BA16F096B10071E010 /* OL_MorphDefinitionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D1C6B916F096B10071E010 /* OL_MorphDefinitionCell.m */; };
+		65D1C6B716F092870071E010 /* OWLLemmaTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D1C6B616F092870071E010 /* OWLLemmaTableCell.m */; };
+		65D1C6BA16F096B10071E010 /* OWLMorphDefinitionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D1C6B916F096B10071E010 /* OWLMorphDefinitionCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,13 +51,13 @@
 		655BB49916EC64CE00E2C91D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		655BB49B16EC64CE00E2C91D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		655BB49D16EC64CE00E2C91D /* OnlineLatinLookupTool-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OnlineLatinLookupTool-Prefix.pch"; sourceTree = "<group>"; };
-		655BB49E16EC64CE00E2C91D /* OL_AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OL_AppDelegate.h; sourceTree = "<group>"; };
-		655BB49F16EC64CE00E2C91D /* OL_AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OL_AppDelegate.m; sourceTree = "<group>"; };
+		655BB49E16EC64CE00E2C91D /* OWLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OWLAppDelegate.h; sourceTree = "<group>"; };
+		655BB49F16EC64CE00E2C91D /* OWLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OWLAppDelegate.m; sourceTree = "<group>"; };
 		655BB4A116EC64CE00E2C91D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		655BB4A316EC64CE00E2C91D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		655BB4A516EC64CE00E2C91D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		655BB4A716EC64CE00E2C91D /* OL_ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OL_ViewController.h; sourceTree = "<group>"; };
-		655BB4A816EC64CE00E2C91D /* OL_ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OL_ViewController.m; sourceTree = "<group>"; };
+		655BB4A716EC64CE00E2C91D /* OWLSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OWLSearchViewController.h; sourceTree = "<group>"; };
+		655BB4A816EC64CE00E2C91D /* OWLSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OWLSearchViewController.m; sourceTree = "<group>"; };
 		655BB4B216EC64CF00E2C91D /* LatinOnlineWordLookupTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LatinOnlineWordLookupTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		655BB4B316EC64CF00E2C91D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		655BB4BB16EC64CF00E2C91D /* OnlineLatinLookupToolTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OnlineLatinLookupToolTests-Info.plist"; sourceTree = "<group>"; };
@@ -66,18 +66,18 @@
 		655BB4C016EC64CF00E2C91D /* OnlineLatinLookupToolTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OnlineLatinLookupToolTests.m; sourceTree = "<group>"; };
 		655BB4CA16EC651300E2C91D /* XPathResultNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathResultNode.h; sourceTree = "<group>"; };
 		655BB4CB16EC651300E2C91D /* XPathResultNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathResultNode.m; sourceTree = "<group>"; };
-		655BB4CD16EC659200E2C91D /* OL_LatinMorphData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OL_LatinMorphData.h; sourceTree = "<group>"; };
-		655BB4CE16EC659200E2C91D /* OL_LatinMorphData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OL_LatinMorphData.m; sourceTree = "<group>"; };
+		655BB4CD16EC659200E2C91D /* OWLMorphData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLMorphData.h; sourceTree = "<group>"; };
+		655BB4CE16EC659200E2C91D /* OWLMorphData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLMorphData.m; sourceTree = "<group>"; };
 		655BB4D016EC65B300E2C91D /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		655BB4D216EC747C00E2C91D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		655BB4D316EC747C00E2C91D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		655BB4D516EC74AC00E2C91D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		65CE8C9D16EDF2B100B09599 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
-		65D1C6B516F092870071E010 /* OL_LemmaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OL_LemmaTableViewCell.h; sourceTree = "<group>"; };
-		65D1C6B616F092870071E010 /* OL_LemmaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OL_LemmaTableViewCell.m; sourceTree = "<group>"; };
-		65D1C6B816F096B10071E010 /* OL_MorphDefinitionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OL_MorphDefinitionCell.h; sourceTree = "<group>"; };
-		65D1C6B916F096B10071E010 /* OL_MorphDefinitionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OL_MorphDefinitionCell.m; sourceTree = "<group>"; };
-		83146670FAADC4ECFF743838 /* OL_LatinMorphDataObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OL_LatinMorphDataObserver.h; path = ../OL_LatinMorphDataObserver.h; sourceTree = "<group>"; };
+		65D1C6B516F092870071E010 /* OWLLemmaTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLLemmaTableCell.h; sourceTree = "<group>"; };
+		65D1C6B616F092870071E010 /* OWLLemmaTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLLemmaTableCell.m; sourceTree = "<group>"; };
+		65D1C6B816F096B10071E010 /* OWLMorphDefinitionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLMorphDefinitionCell.h; sourceTree = "<group>"; };
+		65D1C6B916F096B10071E010 /* OWLMorphDefinitionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLMorphDefinitionCell.m; sourceTree = "<group>"; };
+		83146670FAADC4ECFF743838 /* OWLMorphDataObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OWLMorphDataObserver.h; path = ../OWLMorphDataObserver.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,23 +141,23 @@
 		655BB49516EC64CE00E2C91D /* LatinOnlineWordLookup */ = {
 			isa = PBXGroup;
 			children = (
-				83146670FAADC4ECFF743838 /* OL_LatinMorphDataObserver.h */,
+				83146670FAADC4ECFF743838 /* OWLMorphDataObserver.h */,
 				655BB4D216EC747C00E2C91D /* Reachability.h */,
 				655BB4D316EC747C00E2C91D /* Reachability.m */,
-				655BB4CD16EC659200E2C91D /* OL_LatinMorphData.h */,
-				655BB4CE16EC659200E2C91D /* OL_LatinMorphData.m */,
+				655BB4CD16EC659200E2C91D /* OWLMorphData.h */,
+				655BB4CE16EC659200E2C91D /* OWLMorphData.m */,
 				655BB4CA16EC651300E2C91D /* XPathResultNode.h */,
 				655BB4CB16EC651300E2C91D /* XPathResultNode.m */,
-				655BB49E16EC64CE00E2C91D /* OL_AppDelegate.h */,
-				655BB49F16EC64CE00E2C91D /* OL_AppDelegate.m */,
+				655BB49E16EC64CE00E2C91D /* OWLAppDelegate.h */,
+				655BB49F16EC64CE00E2C91D /* OWLAppDelegate.m */,
 				65CE8C9D16EDF2B100B09599 /* MainStoryboard.storyboard */,
-				65D1C6B816F096B10071E010 /* OL_MorphDefinitionCell.h */,
-				65D1C6B916F096B10071E010 /* OL_MorphDefinitionCell.m */,
-				655BB4A716EC64CE00E2C91D /* OL_ViewController.h */,
-				655BB4A816EC64CE00E2C91D /* OL_ViewController.m */,
+				65D1C6B816F096B10071E010 /* OWLMorphDefinitionCell.h */,
+				65D1C6B916F096B10071E010 /* OWLMorphDefinitionCell.m */,
+				655BB4A716EC64CE00E2C91D /* OWLSearchViewController.h */,
+				655BB4A816EC64CE00E2C91D /* OWLSearchViewController.m */,
 				655BB49616EC64CE00E2C91D /* Supporting Files */,
-				65D1C6B516F092870071E010 /* OL_LemmaTableViewCell.h */,
-				65D1C6B616F092870071E010 /* OL_LemmaTableViewCell.m */,
+				65D1C6B516F092870071E010 /* OWLLemmaTableCell.h */,
+				65D1C6B616F092870071E010 /* OWLLemmaTableCell.m */,
 			);
 			name = LatinOnlineWordLookup;
 			path = OnlineLatinLookupTool;
@@ -309,13 +309,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				655BB49C16EC64CE00E2C91D /* main.m in Sources */,
-				655BB4A016EC64CE00E2C91D /* OL_AppDelegate.m in Sources */,
-				655BB4A916EC64CE00E2C91D /* OL_ViewController.m in Sources */,
+				655BB4A016EC64CE00E2C91D /* OWLAppDelegate.m in Sources */,
+				655BB4A916EC64CE00E2C91D /* OWLSearchViewController.m in Sources */,
 				655BB4CC16EC651300E2C91D /* XPathResultNode.m in Sources */,
-				655BB4CF16EC659200E2C91D /* OL_LatinMorphData.m in Sources */,
+				655BB4CF16EC659200E2C91D /* OWLMorphData.m in Sources */,
 				655BB4D416EC747C00E2C91D /* Reachability.m in Sources */,
-				65D1C6B716F092870071E010 /* OL_LemmaTableViewCell.m in Sources */,
-				65D1C6BA16F096B10071E010 /* OL_MorphDefinitionCell.m in Sources */,
+				65D1C6B716F092870071E010 /* OWLLemmaTableCell.m in Sources */,
+				65D1C6BA16F096B10071E010 /* OWLMorphDefinitionCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
