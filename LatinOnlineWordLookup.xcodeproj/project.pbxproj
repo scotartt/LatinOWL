@@ -47,10 +47,10 @@
 		655BB48F16EC64CE00E2C91D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		655BB49116EC64CE00E2C91D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		655BB49316EC64CE00E2C91D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		655BB49716EC64CE00E2C91D /* LatinOnlineWordLookup-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LatinOnlineWordLookup-Info.plist"; sourceTree = "<group>"; };
+		655BB49716EC64CE00E2C91D /* OnlineLatinLookupTool-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OnlineLatinLookupTool-Info.plist"; sourceTree = "<group>"; };
 		655BB49916EC64CE00E2C91D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		655BB49B16EC64CE00E2C91D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		655BB49D16EC64CE00E2C91D /* LatinOnlineWordLookup-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LatinOnlineWordLookup-Prefix.pch"; sourceTree = "<group>"; };
+		655BB49D16EC64CE00E2C91D /* OnlineLatinLookupTool-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OnlineLatinLookupTool-Prefix.pch"; sourceTree = "<group>"; };
 		655BB49E16EC64CE00E2C91D /* OL_AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OL_AppDelegate.h; sourceTree = "<group>"; };
 		655BB49F16EC64CE00E2C91D /* OL_AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OL_AppDelegate.m; sourceTree = "<group>"; };
 		655BB4A116EC64CE00E2C91D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 		655BB4A816EC64CE00E2C91D /* OL_ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OL_ViewController.m; sourceTree = "<group>"; };
 		655BB4B216EC64CF00E2C91D /* LatinOnlineWordLookupTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LatinOnlineWordLookupTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		655BB4B316EC64CF00E2C91D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		655BB4BB16EC64CF00E2C91D /* LatinOnlineWordLookupTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LatinOnlineWordLookupTests-Info.plist"; sourceTree = "<group>"; };
+		655BB4BB16EC64CF00E2C91D /* OnlineLatinLookupToolTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OnlineLatinLookupToolTests-Info.plist"; sourceTree = "<group>"; };
 		655BB4BD16EC64CF00E2C91D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		655BB4BF16EC64CF00E2C91D /* OnlineLatinLookupToolTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnlineLatinLookupToolTests.h; sourceTree = "<group>"; };
 		655BB4C016EC64CF00E2C91D /* OnlineLatinLookupToolTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OnlineLatinLookupToolTests.m; sourceTree = "<group>"; };
@@ -165,10 +165,10 @@
 		655BB49616EC64CE00E2C91D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				655BB49716EC64CE00E2C91D /* LatinOnlineWordLookup-Info.plist */,
+				655BB49716EC64CE00E2C91D /* OnlineLatinLookupTool-Info.plist */,
 				655BB49816EC64CE00E2C91D /* InfoPlist.strings */,
 				655BB49B16EC64CE00E2C91D /* main.m */,
-				655BB49D16EC64CE00E2C91D /* LatinOnlineWordLookup-Prefix.pch */,
+				655BB49D16EC64CE00E2C91D /* OnlineLatinLookupTool-Prefix.pch */,
 				655BB4A116EC64CE00E2C91D /* Default.png */,
 				655BB4A316EC64CE00E2C91D /* Default@2x.png */,
 				655BB4A516EC64CE00E2C91D /* Default-568h@2x.png */,
@@ -189,7 +189,7 @@
 		655BB4BA16EC64CF00E2C91D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				655BB4BB16EC64CF00E2C91D /* LatinOnlineWordLookupTests-Info.plist */,
+				655BB4BB16EC64CF00E2C91D /* OnlineLatinLookupToolTests-Info.plist */,
 				655BB4BC16EC64CF00E2C91D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -416,8 +416,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "OnlineLatinLookupTool/LatinOnlineWordLookup-Prefix.pch";
-				INFOPLIST_FILE = "OnlineLatinLookupTool/LatinOnlineWordLookup-Info.plist";
+				GCC_PREFIX_HEADER = "OnlineLatinLookupTool/OnlineLatinLookupTool-Prefix.pch";
+				INFOPLIST_FILE = "OnlineLatinLookupTool/OnlineLatinLookupTool-Info.plist";
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = LatinOnlineWordLookup;
 				"USER_HEADER_SEARCH_PATHS[arch=*]" = /usr/include/libxml2;
@@ -430,8 +430,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "OnlineLatinLookupTool/LatinOnlineWordLookup-Prefix.pch";
-				INFOPLIST_FILE = "OnlineLatinLookupTool/LatinOnlineWordLookup-Info.plist";
+				GCC_PREFIX_HEADER = "OnlineLatinLookupTool/OnlineLatinLookupTool-Prefix.pch";
+				INFOPLIST_FILE = "OnlineLatinLookupTool/OnlineLatinLookupTool-Info.plist";
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = LatinOnlineWordLookup;
 				"USER_HEADER_SEARCH_PATHS[arch=*]" = /usr/include/libxml2;
@@ -449,7 +449,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OnlineLatinLookupTool/OnlineLatinLookupTool-Prefix.pch";
-				INFOPLIST_FILE = "OnlineLatinLookupToolTests/LatinOnlineWordLookupTests-Info.plist";
+				INFOPLIST_FILE = "OnlineLatinLookupToolTests/OnlineLatinLookupToolTests-Info.plist";
 				PRODUCT_NAME = LatinOnlineWordLookupTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -466,7 +466,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OnlineLatinLookupTool/OnlineLatinLookupTool-Prefix.pch";
-				INFOPLIST_FILE = "OnlineLatinLookupToolTests/LatinOnlineWordLookupTests-Info.plist";
+				INFOPLIST_FILE = "OnlineLatinLookupToolTests/OnlineLatinLookupToolTests-Info.plist";
 				PRODUCT_NAME = LatinOnlineWordLookupTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
