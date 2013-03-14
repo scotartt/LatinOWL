@@ -57,7 +57,7 @@
 		65D1C6B616F092870071E010 /* OWLLemmaTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLLemmaTableCell.m; sourceTree = "<group>"; };
 		65D1C6B816F096B10071E010 /* OWLMorphDefinitionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLMorphDefinitionCell.h; sourceTree = "<group>"; };
 		65D1C6B916F096B10071E010 /* OWLMorphDefinitionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLMorphDefinitionCell.m; sourceTree = "<group>"; };
-		83146670FAADC4ECFF743838 /* OWLMorphDataObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OWLMorphDataObserver.h; path = ../OWLMorphDataObserver.h; sourceTree = "<group>"; };
+		83146670FAADC4ECFF743838 /* OWLMorphDataObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OWLMorphDataObserver.h; path = OWLMorphDataObserver.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
