@@ -110,19 +110,6 @@
     }
 
 
-//  - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//    NSLog(@"called titleForHeaderInSection:%d", section);
-//    // The header for the section is the region name -- get this from the region at the section index.
-//    NSString *lemmaId = [self getLemmaIdForSection:(NSUInteger) section];
-//    return [self.latinMorphData theHeaderString:lemmaId];
-//  }
-
-    - (NSString *)getLemmaIdForSection:(NSUInteger)section {
-        NSString *lemmaId = [[[self latinMorphData] lemmas] objectAtIndex:section];
-        return lemmaId;
-    }
-
-
     - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
         int row = [indexPath row];
         int section = [indexPath section];
