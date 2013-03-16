@@ -170,9 +170,9 @@
         NSDictionary *eoData = [dict objectForKey:@"eo"];
         NSArray *dataArray = [eoData objectForKey:@"lexicon"];
         STAssertNotNil(dataArray, @"must have lexicon elements");
-        STAssertEquals((int) 5, (int) dataArray.count, @"should be 5 lexicon links");
+        STAssertEquals((int) 2, (int) dataArray.count, @"should be 2 lexicon links");
         for (XPathResultNode *node in dataArray) {
-            NSLog(@"data=%@", [node description]);
+            NSLog(@"lexiconlinkdata=%@", [node description]);
         }
     }
 
@@ -184,9 +184,9 @@
         NSDictionary *eoData = [dict objectForKey:@"eo2"];
         NSArray *dataArray = [eoData objectForKey:@"lexicon"];
         STAssertNotNil(dataArray, @"must have lexicon elements");
-        STAssertEquals((int) 5, (int) dataArray.count, @"should be 5 lexicon links");
+        STAssertEquals((int) 2, (int) dataArray.count, @"should be 2 lexicon links");
         for (XPathResultNode *node in dataArray) {
-            NSLog(@"data=%@", [node description]);
+            NSLog(@"lexiconlinkdata=%@", [node description]);
         }
     }
 
@@ -196,6 +196,7 @@
         [morphData populateLemmaData:data];
         STAssertTrue(wasError, @"I expected an error to be communicated with the observer (=self)");
     }
+
 
     - (void)testParseLemmaContentFor_eo_hasLexiconLinks {
         NSData *data = [self getData:morphData withLatin:@"eo"];
@@ -208,6 +209,17 @@
         for (XPathResultNode *node in lexicon) {
             NSLog(@"data=%@", [node description]);
         }
+    }
+
+
+    - (void)testGetLewisAndShortDictionaryUrlFor_eo {
+        NSData *data = [self getData:morphData withLatin:@"eo"];
+        [morphData populateLemmaData:data];
+        NSString *lewisAndShort = [morphData theLewisAndShortURL:@"eo"];
+        NSLog(@"Lewis&Short=%@", lewisAndShort);
+        STAssertTrue([lewisAndShort
+          isEqualToString:@"http://www.perseus.tufts.edu/hopper/loadquery?doc=Perseus:text:1999.04.0059:entry=eo1"],
+          @"Lewis & Short link is wrong!");
     }
 
 #pragma Helper methods
@@ -235,7 +247,7 @@
 
 
     - (void)showError:(NSException *)exception1 forSearchTerm:(NSString *)searchTerm {
-        NSLog(@"Search '%@' produced an error: %@", searchTerm, exception1 );
+        NSLog(@"Search '%@' produced an error: %@", searchTerm, exception1);
         wasError = YES;
     }
 

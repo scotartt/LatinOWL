@@ -11,8 +11,8 @@
 @class OWLSearchViewController;
 @protocol OWLMorphDataObserver;
 
-static NSString *const hopperBase = @"http://www.perseus.tufts.edu/hopper/";
-
+static NSString *const HOPPER_BASE = @"http://www.perseus.tufts.edu/hopper/";
+static NSString *const HOPPER_DOC_LOADER_URL = @"loadquery?doc=";  // have to add this onto HOPPER_BASE
 static NSString *const KEY_HEADING = @"heading";
 static NSString *const KEY_DEFINITION = @"definition";
 static NSString *const KEY_TABLE = @"table";
@@ -42,6 +42,8 @@ static NSString *const KEY_LEXICON = @"lexicon";
     - (NSString *)theForm:(NSString *)lemmaId ofIndex:(int)index;
 
     - (NSString *)theFormParsed:(NSString *)lemmaId ofIndex:(int)index;
+
+    - (NSString *)theLewisAndShortURL:(NSString *)lemmaId;
 
     - (OWLMorphData *)reset;
 

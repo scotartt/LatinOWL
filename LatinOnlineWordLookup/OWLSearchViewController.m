@@ -45,7 +45,7 @@
         int section = [indexPath section];
         NSString *lemmaId = [[[self latinMorphData] lemmas] objectAtIndex:section];
         NSLog(@"Selected lemma:%@", lemmaId);
-        NSString *theURL = [NSString stringWithFormat:@"https://www.google.com.au?q=%@", lemmaId];
+        NSString *theURL = [[self latinMorphData] theLewisAndShortURL:lemmaId];
         dictionaryViewController.theURL = theURL;
     }
 }
