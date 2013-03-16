@@ -73,7 +73,7 @@
                                     <outlet property="delegate" destination="c79-vt-M8u" id="bcd-DP-WPH"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" barStyle="blackTranslucent" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mk7-fF-CXM">
+                            <searchBar contentMode="redraw" barStyle="blackOpaque" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mk7-fF-CXM">
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="c79-vt-M8u" id="jQh-B3-Gps"/>
@@ -118,6 +118,7 @@
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C2I-MH-h2c">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <dataDetectorType key="dataDetectorTypes"/>
                                 <connections>
                                     <outlet property="delegate" destination="4zZ-98-TQo" id="5gm-6Q-4dM"/>
                                 </connections>
@@ -145,12 +146,17 @@
             <objects>
                 <navigationController storyboardIdentifier="OWLNavController" modalTransitionStyle="flipHorizontal" id="wKx-dh-IL7" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ff2-GH-tPk">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="ff2-GH-tPk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" id="UQ6-mm-hlL">
+                        <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="c79-vt-M8u" kind="relationship" relationship="rootViewController" id="wPb-ys-N7U"/>
                     </connections>

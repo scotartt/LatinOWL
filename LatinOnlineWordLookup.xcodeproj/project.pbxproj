@@ -14,8 +14,6 @@
 		655BB49C16EC64CE00E2C91D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB49B16EC64CE00E2C91D /* main.m */; };
 		655BB4A016EC64CE00E2C91D /* OWLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB49F16EC64CE00E2C91D /* OWLAppDelegate.m */; };
 		655BB4A216EC64CE00E2C91D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 655BB4A116EC64CE00E2C91D /* Default.png */; };
-		655BB4A416EC64CE00E2C91D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 655BB4A316EC64CE00E2C91D /* Default@2x.png */; };
-		655BB4A616EC64CE00E2C91D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 655BB4A516EC64CE00E2C91D /* Default-568h@2x.png */; };
 		655BB4A916EC64CE00E2C91D /* OWLSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB4A816EC64CE00E2C91D /* OWLSearchViewController.m */; };
 		655BB4CC16EC651300E2C91D /* XPathResultNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB4CB16EC651300E2C91D /* XPathResultNode.m */; };
 		655BB4CF16EC659200E2C91D /* OWLMorphData.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB4CE16EC659200E2C91D /* OWLMorphData.m */; };
@@ -28,6 +26,10 @@
 		658C31C716F44D5400438D7B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 658C31C516F44D5400438D7B /* InfoPlist.strings */; };
 		658C31CA16F44D5400438D7B /* LatinOnlineWordLookupTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 658C31C916F44D5400438D7B /* LatinOnlineWordLookupTests.m */; };
 		658C31D616F47D5A00438D7B /* OWLDictionaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 658C31D516F47D5A00438D7B /* OWLDictionaryViewController.m */; };
+		658C31E716F4C63D00438D7B /* IconDefault.png in Resources */ = {isa = PBXBuildFile; fileRef = 658C31E516F4C63D00438D7B /* IconDefault.png */; };
+		658C31E816F4C63D00438D7B /* IconDefault@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 658C31E616F4C63D00438D7B /* IconDefault@2x.png */; };
+		658C31EB16F4C6D900438D7B /* Default-568h@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 658C31E916F4C6D900438D7B /* Default-568h@2x.PNG */; };
+		658C31EC16F4C6D900438D7B /* Default@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 658C31EA16F4C6D900438D7B /* Default@2x.PNG */; };
 		65CE8C9E16EDF2B100B09599 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65CE8C9D16EDF2B100B09599 /* MainStoryboard.storyboard */; };
 		65D1C6B716F092870071E010 /* OWLLemmaTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D1C6B616F092870071E010 /* OWLLemmaTableCell.m */; };
 		65D1C6BA16F096B10071E010 /* OWLMorphDefinitionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D1C6B916F096B10071E010 /* OWLMorphDefinitionCell.m */; };
@@ -55,8 +57,6 @@
 		655BB49E16EC64CE00E2C91D /* OWLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OWLAppDelegate.h; sourceTree = "<group>"; };
 		655BB49F16EC64CE00E2C91D /* OWLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OWLAppDelegate.m; sourceTree = "<group>"; };
 		655BB4A116EC64CE00E2C91D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		655BB4A316EC64CE00E2C91D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		655BB4A516EC64CE00E2C91D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		655BB4A716EC64CE00E2C91D /* OWLSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OWLSearchViewController.h; sourceTree = "<group>"; };
 		655BB4A816EC64CE00E2C91D /* OWLSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OWLSearchViewController.m; sourceTree = "<group>"; };
 		655BB4B316EC64CF00E2C91D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -76,6 +76,10 @@
 		658C31CB16F44D5400438D7B /* LatinOnlineWordLookupTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LatinOnlineWordLookupTests-Prefix.pch"; sourceTree = "<group>"; };
 		658C31D416F47D5A00438D7B /* OWLDictionaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLDictionaryViewController.h; sourceTree = "<group>"; };
 		658C31D516F47D5A00438D7B /* OWLDictionaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLDictionaryViewController.m; sourceTree = "<group>"; };
+		658C31E516F4C63D00438D7B /* IconDefault.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconDefault.png; sourceTree = "<group>"; };
+		658C31E616F4C63D00438D7B /* IconDefault@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconDefault@2x.png"; sourceTree = "<group>"; };
+		658C31E916F4C6D900438D7B /* Default-568h@2x.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.PNG"; sourceTree = "<group>"; };
+		658C31EA16F4C6D900438D7B /* Default@2x.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.PNG"; sourceTree = "<group>"; };
 		65CE8C9D16EDF2B100B09599 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		65D1C6B516F092870071E010 /* OWLLemmaTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLLemmaTableCell.h; sourceTree = "<group>"; };
 		65D1C6B616F092870071E010 /* OWLLemmaTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLLemmaTableCell.m; sourceTree = "<group>"; };
@@ -171,13 +175,15 @@
 		655BB49616EC64CE00E2C91D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				658C31E916F4C6D900438D7B /* Default-568h@2x.PNG */,
+				658C31EA16F4C6D900438D7B /* Default@2x.PNG */,
+				658C31E516F4C63D00438D7B /* IconDefault.png */,
+				658C31E616F4C63D00438D7B /* IconDefault@2x.png */,
 				655BB49716EC64CE00E2C91D /* LatinOnlineWordLookup-Info.plist */,
 				655BB49816EC64CE00E2C91D /* InfoPlist.strings */,
 				655BB49B16EC64CE00E2C91D /* main.m */,
 				655BB49D16EC64CE00E2C91D /* LatinOnlineWordLookup-Prefix.pch */,
 				655BB4A116EC64CE00E2C91D /* Default.png */,
-				655BB4A316EC64CE00E2C91D /* Default@2x.png */,
-				655BB4A516EC64CE00E2C91D /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -276,9 +282,11 @@
 			files = (
 				655BB49A16EC64CE00E2C91D /* InfoPlist.strings in Resources */,
 				655BB4A216EC64CE00E2C91D /* Default.png in Resources */,
-				655BB4A416EC64CE00E2C91D /* Default@2x.png in Resources */,
-				655BB4A616EC64CE00E2C91D /* Default-568h@2x.png in Resources */,
 				65CE8C9E16EDF2B100B09599 /* MainStoryboard.storyboard in Resources */,
+				658C31E716F4C63D00438D7B /* IconDefault.png in Resources */,
+				658C31E816F4C63D00438D7B /* IconDefault@2x.png in Resources */,
+				658C31EB16F4C6D900438D7B /* Default-568h@2x.PNG in Resources */,
+				658C31EC16F4C6D900438D7B /* Default@2x.PNG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
