@@ -19,6 +19,9 @@
     @synthesize urlString;
     @synthesize lemmas;
 
+   +(OWLMorphData *)data {
+       return [[[OWLMorphData alloc] init] reset];
+   }
 
     - (OWLMorphData *)reset {
         self.definitions = [[NSMutableDictionary alloc] init];
@@ -29,8 +32,8 @@
     }
 
 
-    - (void)searchLatin:(NSString *)latinSearchTerm withController:(id <OWLMorphDataObserver>)theObserver {
-        self.observer = theObserver;
+    - (void)searchLatin:(NSString *)latinSearchTerm withObserver:(id <OWLMorphDataObserver>)morphObserver {
+        self.observer = morphObserver;
         self.urlString = [NSString stringWithFormat:@"%@morph?la=la&l=%@", hopperBase, latinSearchTerm];
         NSLog(@"url = %@", self.urlString);
         NSURL *aUrl = [NSURL URLWithString:self.urlString];

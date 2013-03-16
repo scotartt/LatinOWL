@@ -29,7 +29,7 @@ static NSString *const KEY_LEXICON = @"lexicon";
     @property(nonatomic, strong) NSMutableDictionary *definitions;
     @property(nonatomic, strong) NSArray *lemmas;
 
-    - (void)searchLatin:(NSString *)latinSearchTerm withController:(id <OWLMorphDataObserver>)observer;
+    - (void)searchLatin:(NSString *)latinSearchTerm withObserver:(id <OWLMorphDataObserver>)morphObserver;
 
     - (NSArray *)getAnalysis:(NSData *)data;
 
@@ -44,4 +44,6 @@ static NSString *const KEY_LEXICON = @"lexicon";
     - (NSString *)theFormParsed:(NSString *)lemmaId ofIndex:(int)index;
 
     - (OWLMorphData *)reset;
+
+    + (OWLMorphData *)data;
 @end

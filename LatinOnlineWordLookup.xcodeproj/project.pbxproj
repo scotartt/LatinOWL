@@ -22,10 +22,25 @@
 		655BB4D116EC65B300E2C91D /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BB4D016EC65B300E2C91D /* libxml2.dylib */; };
 		655BB4D416EC747C00E2C91D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB4D316EC747C00E2C91D /* Reachability.m */; };
 		655BB4D616EC74AC00E2C91D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BB4D516EC74AC00E2C91D /* SystemConfiguration.framework */; };
+		658C31BF16F44D5300438D7B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BB4B316EC64CF00E2C91D /* SenTestingKit.framework */; };
+		658C31C016F44D5300438D7B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BB48F16EC64CE00E2C91D /* UIKit.framework */; };
+		658C31C116F44D5300438D7B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BB49116EC64CE00E2C91D /* Foundation.framework */; };
+		658C31C716F44D5400438D7B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 658C31C516F44D5400438D7B /* InfoPlist.strings */; };
+		658C31CA16F44D5400438D7B /* LatinOnlineWordLookupTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 658C31C916F44D5400438D7B /* LatinOnlineWordLookupTests.m */; };
 		65CE8C9E16EDF2B100B09599 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65CE8C9D16EDF2B100B09599 /* MainStoryboard.storyboard */; };
 		65D1C6B716F092870071E010 /* OWLLemmaTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D1C6B616F092870071E010 /* OWLLemmaTableCell.m */; };
 		65D1C6BA16F096B10071E010 /* OWLMorphDefinitionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D1C6B916F096B10071E010 /* OWLMorphDefinitionCell.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		658C31CF16F4549F00438D7B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 655BB48416EC64CE00E2C91D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 655BB48B16EC64CE00E2C91D;
+			remoteInfo = LatinOnlineWordLookup;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		655BB48C16EC64CE00E2C91D /* LatinOnlineWordLookup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LatinOnlineWordLookup.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,12 +67,18 @@
 		655BB4D216EC747C00E2C91D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		655BB4D316EC747C00E2C91D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		655BB4D516EC74AC00E2C91D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		658C31BE16F44D5300438D7B /* LatinOnlineWordLookupTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LatinOnlineWordLookupTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		658C31C416F44D5400438D7B /* LatinOnlineWordLookupTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LatinOnlineWordLookupTests-Info.plist"; sourceTree = "<group>"; };
+		658C31C616F44D5400438D7B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		658C31C816F44D5400438D7B /* LatinOnlineWordLookupTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LatinOnlineWordLookupTests.h; sourceTree = "<group>"; };
+		658C31C916F44D5400438D7B /* LatinOnlineWordLookupTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LatinOnlineWordLookupTests.m; sourceTree = "<group>"; };
+		658C31CB16F44D5400438D7B /* LatinOnlineWordLookupTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LatinOnlineWordLookupTests-Prefix.pch"; sourceTree = "<group>"; };
 		65CE8C9D16EDF2B100B09599 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		65D1C6B516F092870071E010 /* OWLLemmaTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLLemmaTableCell.h; sourceTree = "<group>"; };
 		65D1C6B616F092870071E010 /* OWLLemmaTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLLemmaTableCell.m; sourceTree = "<group>"; };
 		65D1C6B816F096B10071E010 /* OWLMorphDefinitionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLMorphDefinitionCell.h; sourceTree = "<group>"; };
 		65D1C6B916F096B10071E010 /* OWLMorphDefinitionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLMorphDefinitionCell.m; sourceTree = "<group>"; };
-		83146670FAADC4ECFF743838 /* OWLMorphDataObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OWLMorphDataObserver.h; path = OWLMorphDataObserver.h; sourceTree = "<group>"; };
+		83146670FAADC4ECFF743838 /* OWLMorphDataObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLMorphDataObserver.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +94,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		658C31BA16F44D5300438D7B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				658C31BF16F44D5300438D7B /* SenTestingKit.framework in Frameworks */,
+				658C31C016F44D5300438D7B /* UIKit.framework in Frameworks */,
+				658C31C116F44D5300438D7B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -82,6 +113,7 @@
 				655BB4D516EC74AC00E2C91D /* SystemConfiguration.framework */,
 				655BB4D016EC65B300E2C91D /* libxml2.dylib */,
 				655BB49516EC64CE00E2C91D /* LatinOnlineWordLookup */,
+				658C31C216F44D5300438D7B /* LatinOnlineWordLookupTests */,
 				655BB48E16EC64CE00E2C91D /* Frameworks */,
 				655BB48D16EC64CE00E2C91D /* Products */,
 			);
@@ -91,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				655BB48C16EC64CE00E2C91D /* LatinOnlineWordLookup.app */,
+				658C31BE16F44D5300438D7B /* LatinOnlineWordLookupTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,6 +177,26 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		658C31C216F44D5300438D7B /* LatinOnlineWordLookupTests */ = {
+			isa = PBXGroup;
+			children = (
+				658C31C816F44D5400438D7B /* LatinOnlineWordLookupTests.h */,
+				658C31C916F44D5400438D7B /* LatinOnlineWordLookupTests.m */,
+				658C31C316F44D5400438D7B /* Supporting Files */,
+			);
+			path = LatinOnlineWordLookupTests;
+			sourceTree = "<group>";
+		};
+		658C31C316F44D5400438D7B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				658C31C416F44D5400438D7B /* LatinOnlineWordLookupTests-Info.plist */,
+				658C31C516F44D5400438D7B /* InfoPlist.strings */,
+				658C31CB16F44D5400438D7B /* LatinOnlineWordLookupTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -163,6 +216,25 @@
 			productName = LatinOnlineWordLookup;
 			productReference = 655BB48C16EC64CE00E2C91D /* LatinOnlineWordLookup.app */;
 			productType = "com.apple.product-type.application";
+		};
+		658C31BD16F44D5300438D7B /* LatinOnlineWordLookupTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 658C31CE16F44D5400438D7B /* Build configuration list for PBXNativeTarget "LatinOnlineWordLookupTests" */;
+			buildPhases = (
+				658C31B916F44D5300438D7B /* Sources */,
+				658C31BA16F44D5300438D7B /* Frameworks */,
+				658C31BB16F44D5300438D7B /* Resources */,
+				658C31BC16F44D5300438D7B /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				658C31D016F4549F00438D7B /* PBXTargetDependency */,
+			);
+			name = LatinOnlineWordLookupTests;
+			productName = LatinOnlineWordLookupTests;
+			productReference = 658C31BE16F44D5300438D7B /* LatinOnlineWordLookupTests.octest */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -187,6 +259,7 @@
 			projectRoot = "";
 			targets = (
 				655BB48B16EC64CE00E2C91D /* LatinOnlineWordLookup */,
+				658C31BD16F44D5300438D7B /* LatinOnlineWordLookupTests */,
 			);
 		};
 /* End PBXProject section */
@@ -204,7 +277,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		658C31BB16F44D5300438D7B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				658C31C716F44D5400438D7B /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		658C31BC16F44D5300438D7B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		655BB48816EC64CE00E2C91D /* Sources */ = {
@@ -222,13 +319,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		658C31B916F44D5300438D7B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				658C31CA16F44D5400438D7B /* LatinOnlineWordLookupTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		658C31D016F4549F00438D7B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 655BB48B16EC64CE00E2C91D /* LatinOnlineWordLookup */;
+			targetProxy = 658C31CF16F4549F00438D7B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		655BB49816EC64CE00E2C91D /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				655BB49916EC64CE00E2C91D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		658C31C516F44D5400438D7B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				658C31C616F44D5400438D7B /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -320,6 +441,40 @@
 			};
 			name = Release;
 		};
+		658C31CC16F44D5400438D7B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "${BUILT_PRODUCTS_DIR}/LatinOnlineWordLookup.app/LatinOnlineWordLookup";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LatinOnlineWordLookupTests/LatinOnlineWordLookupTests-Prefix.pch";
+				INFOPLIST_FILE = "LatinOnlineWordLookupTests/LatinOnlineWordLookupTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "${BUNDLE_LOADER}";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		658C31CD16F44D5400438D7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "${BUILT_PRODUCTS_DIR}/LatinOnlineWordLookup.app/LatinOnlineWordLookup";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LatinOnlineWordLookupTests/LatinOnlineWordLookupTests-Prefix.pch";
+				INFOPLIST_FILE = "LatinOnlineWordLookupTests/LatinOnlineWordLookupTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "${BUNDLE_LOADER}";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -337,6 +492,15 @@
 			buildConfigurations = (
 				655BB4C516EC64CF00E2C91D /* Debug */,
 				655BB4C616EC64CF00E2C91D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		658C31CE16F44D5400438D7B /* Build configuration list for PBXNativeTarget "LatinOnlineWordLookupTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				658C31CC16F44D5400438D7B /* Debug */,
+				658C31CD16F44D5400438D7B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

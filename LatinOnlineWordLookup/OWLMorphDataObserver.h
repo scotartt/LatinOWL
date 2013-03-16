@@ -4,6 +4,8 @@
 // To change the template use AppCode | Preferences | File Templates.
 //
 
+@class OWLMorphData;
+
 
 @protocol OWLMorphDataObserver <NSObject>
   - (void)refreshViewData:(OWLMorphData *)latinMorph;

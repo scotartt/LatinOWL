@@ -25,7 +25,7 @@
     - (void)viewDidLoad {
         [super viewDidLoad];
         [self.tableView setHidden:YES];
-        self.title = @"Online Latin Lookup";
+        self.title = @"Latin Online Word Lookup";
         [self.activityIndicator stopAnimating];
     }
 
@@ -37,11 +37,13 @@
 
 
     - (void)refreshViewData:(OWLMorphData *)latinMorph {
-        [self.tableView setHidden:NO];
-        NSLog(@"refreshViewData called from URL %@", latinMorph.urlString);
-        [self setLatinMorphData:latinMorph];
-        [self.activityIndicator stopAnimating];
-        [self.tableView reloadData];
+        if (latinMorph == [self latinMorphData]) {
+            // this is the latest instance of search...
+            [self.tableView setHidden:NO];
+            NSLog(@"refreshViewData called from URL %@", latinMorph.urlString);
+            [self.activityIndicator stopAnimating];
+            [self.tableView reloadData];
+        }
     }
 
 
@@ -67,13 +69,14 @@
     - (void)handleSearch:(UISearchBar *)searchBar {
         [self.activityIndicator startAnimating];
         [self.tableView setHidden:YES];
+        OWLMorphData *searchLatinMorphData = [OWLMorphData data];
+        [self setLatinMorphData:searchLatinMorphData];
         // clear the table
-        OWLMorphData *searchLatinMorphData = [[[OWLMorphData alloc] init] reset];
         [self.tableView reloadData];
         NSLog(@"User searched for '%@'", searchBar.text);
         [searchBar resignFirstResponder]; // keyboard go away
         self.searchText = searchBar.text;
-        [searchLatinMorphData searchLatin:self.searchText withController:self];
+        [searchLatinMorphData searchLatin:self.searchText withObserver:self];
     }
 
 
