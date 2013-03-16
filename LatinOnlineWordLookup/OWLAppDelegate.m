@@ -20,7 +20,7 @@
 
         self.storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard"
                                                     bundle:nil];
-        self.viewController = (OWLSearchViewController *) [self.storyBoard instantiateViewControllerWithIdentifier:@"OWLSearchViewController"];
+        self.viewController =  [self.storyBoard instantiateViewControllerWithIdentifier:@"OWLNavController"];
 
         self.window.rootViewController = self.viewController;
         [self.window makeKeyAndVisible];

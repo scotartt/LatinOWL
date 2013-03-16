@@ -9,6 +9,7 @@
 #import "OWLSearchViewController.h"
 #import "OWLLemmaTableCell.h"
 #import "OWLMorphDefinitionCell.h"
+#import "OWLDictionaryViewController.h"
 
 @interface OWLSearchViewController ()
 
@@ -25,9 +26,29 @@
     - (void)viewDidLoad {
         [super viewDidLoad];
         [self.tableView setHidden:YES];
-        self.title = @"Latin Online Word Lookup";
+        self.title = @"Latin Search";
         [self.activityIndicator stopAnimating];
     }
+
+
+    - (void)viewWillAppear:(BOOL)animated {
+        [super viewWillAppear:animated];
+        [self.navigationController setNavigationBarHidden:YES animated:animated];
+    }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // we are opening up the dictionary view.
+    if ([segue.identifier isEqualToString:@"OWLDictionarySegue"]) {
+        OWLDictionaryViewController *dictionaryViewController = segue.destinationViewController;
+        NSLog(@"changing to view:%@", dictionaryViewController);
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        int section = [indexPath section];
+        NSString *lemmaId = [[[self latinMorphData] lemmas] objectAtIndex:section];
+        NSLog(@"Selected lemma:%@", lemmaId);
+        NSString *theURL = [NSString stringWithFormat:@"https://www.google.com.au?q=%@", lemmaId];
+        dictionaryViewController.theURL = theURL;
+    }
+}
 
 
     - (void)didReceiveMemoryWarning {
@@ -35,6 +56,7 @@
         // Dispose of any resources that can be recreated.
     }
 
+#pragma OWLMorphDataObserver methods
 
     - (void)refreshViewData:(OWLMorphData *)latinMorph {
         if (latinMorph == [self latinMorphData]) {
@@ -48,7 +70,11 @@
 
 
     - (void)showError:(NSError *)error forConnection:(NSURLConnection *)connection {
-        NSLog(@"Error = %@", error);
+        NSLog(@"Connection Error = %@", error);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection error"
+                                                        message:error.localizedDescription
+                                                       delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+         [alert show];
     }
 
 
@@ -132,8 +158,6 @@
             NSString *meaningText = [self.latinMorphData theMeaning:lemmaId];
             UILabel *meaningCell = [cell lemmaMeaning];
             [meaningCell setText:meaningText];
-            //[meaningCell setAdjustsFontSizeToFitWidth:YES];
-
             return cell;
         } else if (row < [self tableView:tableView numberOfRowsInSection:section]) {
             NSString *cellIdentifier = @"MorphTableCell";

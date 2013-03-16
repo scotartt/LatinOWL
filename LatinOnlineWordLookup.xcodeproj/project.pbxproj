@@ -27,6 +27,7 @@
 		658C31C116F44D5300438D7B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BB49116EC64CE00E2C91D /* Foundation.framework */; };
 		658C31C716F44D5400438D7B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 658C31C516F44D5400438D7B /* InfoPlist.strings */; };
 		658C31CA16F44D5400438D7B /* LatinOnlineWordLookupTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 658C31C916F44D5400438D7B /* LatinOnlineWordLookupTests.m */; };
+		658C31D616F47D5A00438D7B /* OWLDictionaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 658C31D516F47D5A00438D7B /* OWLDictionaryViewController.m */; };
 		65CE8C9E16EDF2B100B09599 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65CE8C9D16EDF2B100B09599 /* MainStoryboard.storyboard */; };
 		65D1C6B716F092870071E010 /* OWLLemmaTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D1C6B616F092870071E010 /* OWLLemmaTableCell.m */; };
 		65D1C6BA16F096B10071E010 /* OWLMorphDefinitionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D1C6B916F096B10071E010 /* OWLMorphDefinitionCell.m */; };
@@ -73,6 +74,8 @@
 		658C31C816F44D5400438D7B /* LatinOnlineWordLookupTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LatinOnlineWordLookupTests.h; sourceTree = "<group>"; };
 		658C31C916F44D5400438D7B /* LatinOnlineWordLookupTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LatinOnlineWordLookupTests.m; sourceTree = "<group>"; };
 		658C31CB16F44D5400438D7B /* LatinOnlineWordLookupTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LatinOnlineWordLookupTests-Prefix.pch"; sourceTree = "<group>"; };
+		658C31D416F47D5A00438D7B /* OWLDictionaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLDictionaryViewController.h; sourceTree = "<group>"; };
+		658C31D516F47D5A00438D7B /* OWLDictionaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLDictionaryViewController.m; sourceTree = "<group>"; };
 		65CE8C9D16EDF2B100B09599 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		65D1C6B516F092870071E010 /* OWLLemmaTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLLemmaTableCell.h; sourceTree = "<group>"; };
 		65D1C6B616F092870071E010 /* OWLLemmaTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLLemmaTableCell.m; sourceTree = "<group>"; };
@@ -142,6 +145,9 @@
 		655BB49516EC64CE00E2C91D /* LatinOnlineWordLookup */ = {
 			isa = PBXGroup;
 			children = (
+				65CE8C9D16EDF2B100B09599 /* MainStoryboard.storyboard */,
+				655BB49E16EC64CE00E2C91D /* OWLAppDelegate.h */,
+				655BB49F16EC64CE00E2C91D /* OWLAppDelegate.m */,
 				83146670FAADC4ECFF743838 /* OWLMorphDataObserver.h */,
 				655BB4D216EC747C00E2C91D /* Reachability.h */,
 				655BB4D316EC747C00E2C91D /* Reachability.m */,
@@ -149,16 +155,15 @@
 				655BB4CE16EC659200E2C91D /* OWLMorphData.m */,
 				655BB4CA16EC651300E2C91D /* XPathResultNode.h */,
 				655BB4CB16EC651300E2C91D /* XPathResultNode.m */,
-				655BB49E16EC64CE00E2C91D /* OWLAppDelegate.h */,
-				655BB49F16EC64CE00E2C91D /* OWLAppDelegate.m */,
-				65CE8C9D16EDF2B100B09599 /* MainStoryboard.storyboard */,
-				65D1C6B816F096B10071E010 /* OWLMorphDefinitionCell.h */,
-				65D1C6B916F096B10071E010 /* OWLMorphDefinitionCell.m */,
+				658C31D416F47D5A00438D7B /* OWLDictionaryViewController.h */,
+				658C31D516F47D5A00438D7B /* OWLDictionaryViewController.m */,
 				655BB4A716EC64CE00E2C91D /* OWLSearchViewController.h */,
 				655BB4A816EC64CE00E2C91D /* OWLSearchViewController.m */,
-				655BB49616EC64CE00E2C91D /* Supporting Files */,
+				65D1C6B816F096B10071E010 /* OWLMorphDefinitionCell.h */,
+				65D1C6B916F096B10071E010 /* OWLMorphDefinitionCell.m */,
 				65D1C6B516F092870071E010 /* OWLLemmaTableCell.h */,
 				65D1C6B616F092870071E010 /* OWLLemmaTableCell.m */,
+				655BB49616EC64CE00E2C91D /* Supporting Files */,
 			);
 			path = LatinOnlineWordLookup;
 			sourceTree = "<group>";
@@ -316,6 +321,7 @@
 				655BB4D416EC747C00E2C91D /* Reachability.m in Sources */,
 				65D1C6B716F092870071E010 /* OWLLemmaTableCell.m in Sources */,
 				65D1C6BA16F096B10071E010 /* OWLMorphDefinitionCell.m in Sources */,
+				658C31D616F47D5A00438D7B /* OWLDictionaryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
