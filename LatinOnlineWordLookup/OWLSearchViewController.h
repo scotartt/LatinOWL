@@ -14,8 +14,7 @@
 
     @property(weak, nonatomic) IBOutlet UISearchBar *searchBar;
     @property(weak, nonatomic) IBOutlet UITableView *tableView;
-    @property(strong, nonatomic) NSString *searchText;
     @property(weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-    @property(nonatomic, strong) UILabel *label;
+    @property(strong, nonatomic) NSString *searchText;
 
 @end

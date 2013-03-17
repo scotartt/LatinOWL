@@ -10,6 +10,7 @@
 #import "OWLLemmaTableCell.h"
 #import "OWLMorphDefinitionCell.h"
 #import "OWLDictionaryViewController.h"
+#import "OWLInfoViewController.h"
 
 @interface OWLSearchViewController ()
 
@@ -24,6 +25,7 @@
 
 
     - (void)viewDidLoad {
+        [self.activityIndicator startAnimating];
         [super viewDidLoad];
         [self.tableView setHidden:YES];
         self.title = @"Latin Search";
@@ -36,19 +38,24 @@
         [self.navigationController setNavigationBarHidden:YES animated:animated];
     }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // we are opening up the dictionary view.
-    if ([segue.identifier isEqualToString:@"OWLDictionarySegue"]) {
-        OWLDictionaryViewController *dictionaryViewController = segue.destinationViewController;
-        NSLog(@"changing to view:%@", dictionaryViewController);
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        int section = [indexPath section];
-        NSString *lemmaId = [[[self latinMorphData] lemmas] objectAtIndex:section];
-        NSLog(@"Selected lemma:%@", lemmaId);
-        NSString *theURL = [[self latinMorphData] theLewisAndShortURL:lemmaId];
-        dictionaryViewController.theURL = theURL;
+
+    - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+        // we are opening up the dictionary view.
+        if ([segue.identifier isEqualToString:@"OWLDictionarySegue"]) {
+            OWLDictionaryViewController *dictionaryViewController = segue.destinationViewController;
+            NSLog(@"changing to view:%@", dictionaryViewController);
+            NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+            int section = [indexPath section];
+            NSString *lemmaId = [[[self latinMorphData] lemmas] objectAtIndex:section];
+            [dictionaryViewController setTitle:lemmaId];
+            NSLog(@"Selected lemma:%@", lemmaId);
+            NSString *theURL = [[self latinMorphData] theLewisAndShortURL:lemmaId];
+            dictionaryViewController.theURL = theURL;
+        } else if ([segue.identifier isEqualToString:@"OWLAboutSegue"]) {
+            OWLInfoViewController *info = segue.destinationViewController;
+            [info setTitle:@"About LatinOWL"];
+        }
     }
-}
 
 
     - (void)didReceiveMemoryWarning {
@@ -74,7 +81,7 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection error"
                                                         message:error.localizedDescription
                                                        delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-         [alert show];
+        [alert show];
     }
 
 

@@ -7,7 +7,6 @@
 //
 
 #import "OWLAppDelegate.h"
-#import "OWLSearchViewController.h"
 
 @implementation OWLAppDelegate
 
@@ -20,12 +19,10 @@
 
         self.storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard"
                                                     bundle:nil];
-        self.viewController =  [self.storyBoard instantiateViewControllerWithIdentifier:@"OWLNavController"];
-
+        self.viewController = [self.storyBoard instantiateViewControllerWithIdentifier:@"OWLNavController"];
         self.window.rootViewController = self.viewController;
-        [self.window makeKeyAndVisible];
         [self startReach];
-
+        [self.window makeKeyAndVisible];
         return YES;
     }
 

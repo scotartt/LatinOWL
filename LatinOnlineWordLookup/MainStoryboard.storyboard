@@ -9,7 +9,7 @@
             <objects>
                 <viewController storyboardIdentifier="OWLSearchViewController" id="c79-vt-M8u" customClass="OWLSearchViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hsx-55-LgT">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Fnc-5L-EWY">
@@ -97,6 +97,14 @@
                             <constraint firstItem="Mk7-fF-CXM" firstAttribute="leading" secondItem="Hsx-55-LgT" secondAttribute="leading" type="default" id="ovj-Kz-HJh"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="EhE-VK-aUE"/>
+                        <barButtonItem title="?" id="Atw-U7-sZ9">
+                            <connections>
+                                <segue destination="0Fn-iO-xqR" kind="push" identifier="OWLAboutSegue" id="Sub-TX-rAi"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="GXn-FY-Azi"/>
                     <connections>
                         <outlet property="activityIndicator" destination="onE-gs-aed" id="D78-3a-FQp"/>
@@ -113,7 +121,7 @@
             <objects>
                 <viewController id="4zZ-98-TQo" customClass="OWLDictionaryViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z0O-Gh-nhx">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C2I-MH-h2c">
@@ -132,6 +140,25 @@
                             <constraint firstItem="C2I-MH-h2c" firstAttribute="trailing" secondItem="z0O-Gh-nhx" secondAttribute="trailing" type="default" id="yYG-3y-1o1"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="&lt;&lt;" id="ZKt-lu-gOH">
+                            <connections>
+                                <action selector="goBack" destination="C2I-MH-h2c" id="ruh-P5-1zW"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="8DB-WG-HUK"/>
+                        <barButtonItem systemItem="refresh" id="hDn-Gt-LgS">
+                            <connections>
+                                <action selector="reload" destination="C2I-MH-h2c" id="bpg-bw-TqE"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="jVZ-Oy-3nH"/>
+                        <barButtonItem title=">>" id="Tk5-9C-XHd">
+                            <connections>
+                                <action selector="goForward" destination="C2I-MH-h2c" id="ksl-W6-3ph"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="DEJ-oH-wDu"/>
                     <connections>
                         <outlet property="webView" destination="C2I-MH-h2c" id="qsn-MI-p7u"/>
@@ -144,16 +171,17 @@
         <!--Navigation Controller-->
         <scene sceneID="ZWR-mB-TWL">
             <objects>
-                <navigationController storyboardIdentifier="OWLNavController" modalTransitionStyle="flipHorizontal" id="wKx-dh-IL7" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="OWLNavController" modalTransitionStyle="flipHorizontal" toolbarHidden="NO" id="wKx-dh-IL7" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" barStyle="blackOpaque"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="ff2-GH-tPk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" id="UQ6-mm-hlL">
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" id="UQ6-mm-hlL">
                         <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
@@ -165,40 +193,37 @@
             </objects>
             <point key="canvasLocation" x="-1760" y="-255"/>
         </scene>
+        <!--Info View Controller - info-->
+        <scene sceneID="4so-V1-cd7">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ABb-NP-Sqb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController title="info" id="0Fn-iO-xqR" customClass="OWLInfoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dos-BP-qLo">
+                        <rect key="frame" x="0.0" y="64" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="COo-Nq-sgk">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <dataDetectorType key="dataDetectorTypes"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="COo-Nq-sgk" firstAttribute="trailing" secondItem="dos-BP-qLo" secondAttribute="trailing" type="default" id="9yX-WM-e8M"/>
+                            <constraint firstItem="COo-Nq-sgk" firstAttribute="leading" secondItem="dos-BP-qLo" secondAttribute="leading" type="default" id="Hzi-ty-Yd6"/>
+                            <constraint firstItem="COo-Nq-sgk" firstAttribute="top" secondItem="dos-BP-qLo" secondAttribute="top" type="default" id="Qhq-fO-VTf"/>
+                            <constraint firstItem="COo-Nq-sgk" firstAttribute="bottom" secondItem="dos-BP-qLo" secondAttribute="bottom" type="default" id="qPh-VA-Aa4"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Xk1-XH-rT6"/>
+                    <connections>
+                        <outlet property="webView" destination="COo-Nq-sgk" id="1nD-XD-vWO"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-732" y="384"/>
+        </scene>
     </scenes>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="OWLDictionaryViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OWLDictionaryViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="OWLLemmaTableCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OWLLemmaTableCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="lemmaMeaning" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lemmaTitle" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="OWLMorphDefinitionCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OWLMorphDefinitionCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="morphParsing" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="morphTitle" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="OWLSearchViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OWLSearchViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

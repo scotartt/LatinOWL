@@ -30,9 +30,11 @@
 		658C31E816F4C63D00438D7B /* IconDefault@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 658C31E616F4C63D00438D7B /* IconDefault@2x.png */; };
 		658C31EB16F4C6D900438D7B /* Default-568h@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 658C31E916F4C6D900438D7B /* Default-568h@2x.PNG */; };
 		658C31EC16F4C6D900438D7B /* Default@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 658C31EA16F4C6D900438D7B /* Default@2x.PNG */; };
+		658CF6CC16F5FA5500377693 /* OWLInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 658CF6CB16F5FA5500377693 /* OWLInfoViewController.m */; };
 		65CE8C9E16EDF2B100B09599 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65CE8C9D16EDF2B100B09599 /* MainStoryboard.storyboard */; };
 		65D1C6B716F092870071E010 /* OWLLemmaTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D1C6B616F092870071E010 /* OWLLemmaTableCell.m */; };
 		65D1C6BA16F096B10071E010 /* OWLMorphDefinitionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D1C6B916F096B10071E010 /* OWLMorphDefinitionCell.m */; };
+		8314699DFE6DC83FCFE6697F /* splash.xhtml in Resources */ = {isa = PBXBuildFile; fileRef = 83146CC89247366ABF36F268 /* splash.xhtml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,12 +82,15 @@
 		658C31E616F4C63D00438D7B /* IconDefault@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconDefault@2x.png"; sourceTree = "<group>"; };
 		658C31E916F4C6D900438D7B /* Default-568h@2x.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.PNG"; sourceTree = "<group>"; };
 		658C31EA16F4C6D900438D7B /* Default@2x.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.PNG"; sourceTree = "<group>"; };
+		658CF6CA16F5FA5500377693 /* OWLInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLInfoViewController.h; sourceTree = "<group>"; };
+		658CF6CB16F5FA5500377693 /* OWLInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLInfoViewController.m; sourceTree = "<group>"; };
 		65CE8C9D16EDF2B100B09599 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		65D1C6B516F092870071E010 /* OWLLemmaTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLLemmaTableCell.h; sourceTree = "<group>"; };
 		65D1C6B616F092870071E010 /* OWLLemmaTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLLemmaTableCell.m; sourceTree = "<group>"; };
 		65D1C6B816F096B10071E010 /* OWLMorphDefinitionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLMorphDefinitionCell.h; sourceTree = "<group>"; };
 		65D1C6B916F096B10071E010 /* OWLMorphDefinitionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLMorphDefinitionCell.m; sourceTree = "<group>"; };
 		83146670FAADC4ECFF743838 /* OWLMorphDataObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLMorphDataObserver.h; sourceTree = "<group>"; };
+		83146CC89247366ABF36F268 /* splash.xhtml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = splash.xhtml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,7 +172,10 @@
 				65D1C6B916F096B10071E010 /* OWLMorphDefinitionCell.m */,
 				65D1C6B516F092870071E010 /* OWLLemmaTableCell.h */,
 				65D1C6B616F092870071E010 /* OWLLemmaTableCell.m */,
+				658CF6CA16F5FA5500377693 /* OWLInfoViewController.h */,
+				658CF6CB16F5FA5500377693 /* OWLInfoViewController.m */,
 				655BB49616EC64CE00E2C91D /* Supporting Files */,
+				83146CC89247366ABF36F268 /* splash.xhtml */,
 			);
 			path = LatinOnlineWordLookup;
 			sourceTree = "<group>";
@@ -287,6 +295,7 @@
 				658C31E816F4C63D00438D7B /* IconDefault@2x.png in Resources */,
 				658C31EB16F4C6D900438D7B /* Default-568h@2x.PNG in Resources */,
 				658C31EC16F4C6D900438D7B /* Default@2x.PNG in Resources */,
+				8314699DFE6DC83FCFE6697F /* splash.xhtml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +339,7 @@
 				65D1C6B716F092870071E010 /* OWLLemmaTableCell.m in Sources */,
 				65D1C6BA16F096B10071E010 /* OWLMorphDefinitionCell.m in Sources */,
 				658C31D616F47D5A00438D7B /* OWLDictionaryViewController.m in Sources */,
+				658CF6CC16F5FA5500377693 /* OWLInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
