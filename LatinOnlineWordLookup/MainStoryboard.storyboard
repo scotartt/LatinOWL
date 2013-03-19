@@ -102,18 +102,18 @@
                         </subviews>
                         <color key="backgroundColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Fnc-5L-EWY" firstAttribute="bottom" secondItem="Hsx-55-LgT" secondAttribute="bottom" type="default" id="30g-S6-a4f"/>
+                            <constraint firstItem="Fnc-5L-EWY" firstAttribute="bottom" secondItem="Hsx-55-LgT" secondAttribute="bottom" type="default" id="2IB-Fi-BE1"/>
                             <constraint firstItem="Mk7-fF-CXM" firstAttribute="top" secondItem="Hsx-55-LgT" secondAttribute="top" type="default" id="8yz-Oa-fce"/>
                             <constraint firstItem="onE-gs-aed" firstAttribute="leading" secondItem="Hsx-55-LgT" secondAttribute="leading" type="default" id="D9X-Qz-gp1"/>
                             <constraint firstItem="Fnc-5L-EWY" firstAttribute="top" secondItem="Mk7-fF-CXM" secondAttribute="bottom" type="default" id="DxM-Rs-ajB"/>
-                            <constraint firstItem="AGX-BZ-pBb" firstAttribute="centerX" secondItem="Mk7-fF-CXM" secondAttribute="centerX" type="default" id="NDc-L3-oeu"/>
+                            <constraint firstItem="Mk7-fF-CXM" firstAttribute="trailing" secondItem="Hsx-55-LgT" secondAttribute="trailing" type="default" id="Ffj-M6-vMa"/>
+                            <constraint firstItem="Fnc-5L-EWY" firstAttribute="trailing" secondItem="Hsx-55-LgT" secondAttribute="trailing" type="default" id="HSc-X5-Wh8"/>
                             <constraint firstItem="Fnc-5L-EWY" firstAttribute="leading" secondItem="Hsx-55-LgT" secondAttribute="leading" type="default" id="SFK-WR-x80"/>
                             <constraint firstItem="AGX-BZ-pBb" firstAttribute="centerX" secondItem="onE-gs-aed" secondAttribute="centerX" type="default" id="V3O-Bs-Y75"/>
                             <constraint firstAttribute="bottom" secondItem="AGX-BZ-pBb" secondAttribute="bottom" constant="10" type="user" id="a6o-k5-nhl"/>
                             <constraint firstItem="onE-gs-aed" firstAttribute="trailing" secondItem="Hsx-55-LgT" secondAttribute="trailing" type="default" id="bo8-Ug-VGP"/>
                             <constraint firstItem="Mk7-fF-CXM" firstAttribute="leading" secondItem="Hsx-55-LgT" secondAttribute="leading" type="default" id="ovj-Kz-HJh"/>
                             <constraint firstItem="onE-gs-aed" firstAttribute="centerY" secondItem="Hsx-55-LgT" secondAttribute="centerY" type="default" id="qLF-Cu-90n"/>
-                            <constraint firstItem="AGX-BZ-pBb" firstAttribute="centerX" secondItem="Fnc-5L-EWY" secondAttribute="centerX" type="default" id="xFV-ES-iRg"/>
                         </constraints>
                     </view>
                     <toolbarItems>
