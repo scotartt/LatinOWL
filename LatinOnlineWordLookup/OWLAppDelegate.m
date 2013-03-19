@@ -14,13 +14,16 @@
 
 
     - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+        CGSize result = [[UIScreen mainScreen] bounds].size;
+        NSLog(@"The size is %f x %f", result.height, result.width);
+
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         // Override point for customization after application launch.
 
         self.storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard"
                                                     bundle:nil];
         self.viewController = [self.storyBoard instantiateViewControllerWithIdentifier:@"OWLNavController"];
-        self.window.rootViewController = self.viewController;
+        self.window.rootViewController = (UIViewController *) self.viewController;
         [self startReach];
         [self.window makeKeyAndVisible];
         return YES;

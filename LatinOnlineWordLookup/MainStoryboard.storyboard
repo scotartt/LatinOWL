@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="wKx-dh-IL7">
     <dependencies>
+        <development version="4600" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
@@ -120,7 +121,7 @@
                         <barButtonItem title="?" id="Atw-U7-sZ9"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="GXn-FY-Azi"/>
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="aboutButton" destination="AGX-BZ-pBb" id="w0U-ci-puo"/>
                         <outlet property="activityIndicator" destination="onE-gs-aed" id="D78-3a-FQp"/>
@@ -176,6 +177,7 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="DEJ-oH-wDu"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="webView" destination="C2I-MH-h2c" id="qsn-MI-p7u"/>
                     </connections>
@@ -187,11 +189,10 @@
         <!--Navigation Controller-->
         <scene sceneID="ZWR-mB-TWL">
             <objects>
-                <navigationController storyboardIdentifier="OWLNavController" modalTransitionStyle="flipHorizontal" id="wKx-dh-IL7" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="OWLNavController" autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" id="wKx-dh-IL7" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="ff2-GH-tPk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -231,6 +232,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Xk1-XH-rT6"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="webView" destination="COo-Nq-sgk" id="1nD-XD-vWO"/>
                     </connections>

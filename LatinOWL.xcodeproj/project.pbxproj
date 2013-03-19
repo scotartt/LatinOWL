@@ -13,7 +13,6 @@
 		655BB49A16EC64CE00E2C91D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 655BB49816EC64CE00E2C91D /* InfoPlist.strings */; };
 		655BB49C16EC64CE00E2C91D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB49B16EC64CE00E2C91D /* main.m */; };
 		655BB4A016EC64CE00E2C91D /* OWLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB49F16EC64CE00E2C91D /* OWLAppDelegate.m */; };
-		655BB4A216EC64CE00E2C91D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 655BB4A116EC64CE00E2C91D /* Default.png */; };
 		655BB4A916EC64CE00E2C91D /* OWLSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB4A816EC64CE00E2C91D /* OWLSearchViewController.m */; };
 		655BB4CC16EC651300E2C91D /* XPathResultNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB4CB16EC651300E2C91D /* XPathResultNode.m */; };
 		655BB4CF16EC659200E2C91D /* OWLMorphData.m in Sources */ = {isa = PBXBuildFile; fileRef = 655BB4CE16EC659200E2C91D /* OWLMorphData.m */; };
@@ -29,6 +28,9 @@
 		658C31E716F4C63D00438D7B /* IconDefault.png in Resources */ = {isa = PBXBuildFile; fileRef = 658C31E516F4C63D00438D7B /* IconDefault.png */; };
 		658C31E816F4C63D00438D7B /* IconDefault@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 658C31E616F4C63D00438D7B /* IconDefault@2x.png */; };
 		658CF6CC16F5FA5500377693 /* OWLInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 658CF6CB16F5FA5500377693 /* OWLInfoViewController.m */; };
+		659C402116F8781A00CDC256 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 659C401F16F8781A00CDC256 /* Default-568h@2x.png */; };
+		659C402216F8781A00CDC256 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 659C402016F8781A00CDC256 /* Default@2x.png */; };
+		659C402416F87C7D00CDC256 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 659C402316F87C7D00CDC256 /* Default.png */; };
 		65CE8C9E16EDF2B100B09599 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65CE8C9D16EDF2B100B09599 /* MainStoryboard.storyboard */; };
 		65D1C6B716F092870071E010 /* OWLLemmaTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D1C6B616F092870071E010 /* OWLLemmaTableCell.m */; };
 		65D1C6BA16F096B10071E010 /* OWLMorphDefinitionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D1C6B916F096B10071E010 /* OWLMorphDefinitionCell.m */; };
@@ -56,7 +58,6 @@
 		655BB49D16EC64CE00E2C91D /* LatinOWL-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LatinOWL-Prefix.pch"; sourceTree = "<group>"; };
 		655BB49E16EC64CE00E2C91D /* OWLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OWLAppDelegate.h; sourceTree = "<group>"; };
 		655BB49F16EC64CE00E2C91D /* OWLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OWLAppDelegate.m; sourceTree = "<group>"; };
-		655BB4A116EC64CE00E2C91D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		655BB4A716EC64CE00E2C91D /* OWLSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OWLSearchViewController.h; sourceTree = "<group>"; };
 		655BB4A816EC64CE00E2C91D /* OWLSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OWLSearchViewController.m; sourceTree = "<group>"; };
 		655BB4B316EC64CF00E2C91D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -80,6 +81,9 @@
 		658C31E616F4C63D00438D7B /* IconDefault@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconDefault@2x.png"; sourceTree = "<group>"; };
 		658CF6CA16F5FA5500377693 /* OWLInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLInfoViewController.h; sourceTree = "<group>"; };
 		658CF6CB16F5FA5500377693 /* OWLInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLInfoViewController.m; sourceTree = "<group>"; };
+		659C401F16F8781A00CDC256 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		659C402016F8781A00CDC256 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		659C402316F87C7D00CDC256 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		65CE8C9D16EDF2B100B09599 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		65D1C6B516F092870071E010 /* OWLLemmaTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLLemmaTableCell.h; sourceTree = "<group>"; };
 		65D1C6B616F092870071E010 /* OWLLemmaTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLLemmaTableCell.m; sourceTree = "<group>"; };
@@ -179,13 +183,15 @@
 		655BB49616EC64CE00E2C91D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				659C402316F87C7D00CDC256 /* Default.png */,
+				659C401F16F8781A00CDC256 /* Default-568h@2x.png */,
+				659C402016F8781A00CDC256 /* Default@2x.png */,
 				658C31E516F4C63D00438D7B /* IconDefault.png */,
 				658C31E616F4C63D00438D7B /* IconDefault@2x.png */,
 				655BB49716EC64CE00E2C91D /* LatinOWL-Info.plist */,
 				655BB49816EC64CE00E2C91D /* InfoPlist.strings */,
 				655BB49B16EC64CE00E2C91D /* main.m */,
 				655BB49D16EC64CE00E2C91D /* LatinOWL-Prefix.pch */,
-				655BB4A116EC64CE00E2C91D /* Default.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -283,11 +289,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				655BB49A16EC64CE00E2C91D /* InfoPlist.strings in Resources */,
-				655BB4A216EC64CE00E2C91D /* Default.png in Resources */,
 				65CE8C9E16EDF2B100B09599 /* MainStoryboard.storyboard in Resources */,
 				658C31E716F4C63D00438D7B /* IconDefault.png in Resources */,
 				658C31E816F4C63D00438D7B /* IconDefault@2x.png in Resources */,
 				8314699DFE6DC83FCFE6697F /* splash.xhtml in Resources */,
+				659C402116F8781A00CDC256 /* Default-568h@2x.png in Resources */,
+				659C402216F8781A00CDC256 /* Default@2x.png in Resources */,
+				659C402416F87C7D00CDC256 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
