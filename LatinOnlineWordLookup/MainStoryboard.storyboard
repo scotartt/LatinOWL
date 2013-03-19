@@ -9,7 +9,7 @@
         <scene sceneID="qBf-KI-Guf">
             <objects>
                 <viewController storyboardIdentifier="OWLSearchViewController" id="c79-vt-M8u" customClass="OWLSearchViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Hsx-55-LgT">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="Hsx-55-LgT">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
