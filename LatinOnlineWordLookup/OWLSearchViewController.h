@@ -12,9 +12,10 @@
 
 @interface OWLSearchViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, OWLMorphDataObserver>
 
+    @property(strong, nonatomic) NSString *searchText;
     @property(weak, nonatomic) IBOutlet UISearchBar *searchBar;
     @property(weak, nonatomic) IBOutlet UITableView *tableView;
     @property(weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-    @property(strong, nonatomic) NSString *searchText;
+    @property (strong, nonatomic) IBOutlet UIButton *aboutButton;
 
 @end

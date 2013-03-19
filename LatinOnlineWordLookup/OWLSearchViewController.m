@@ -25,8 +25,9 @@
 
 
     - (void)viewDidLoad {
-        [self.activityIndicator startAnimating];
         [super viewDidLoad];
+        [self.activityIndicator startAnimating];
+        [self.aboutButton setHidden:NO];
         [self.tableView setHidden:YES];
         self.title = @"Latin Search";
         [self.activityIndicator stopAnimating];
@@ -68,6 +69,7 @@
     - (void)refreshViewData:(OWLMorphData *)latinMorph {
         if (latinMorph == [self latinMorphData]) {
             // this is the latest instance of search...
+            [self.aboutButton setHidden:YES];
             [self.tableView setHidden:NO];
             NSLog(@"refreshViewData called from URL %@", latinMorph.urlString);
             [self.activityIndicator stopAnimating];
