@@ -16,9 +16,9 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="onE-gs-aed">
                                 <color key="color" red="0.0" green="0.25097998980000003" blue="0.50196099279999995" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Fnc-5L-EWY">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Fnc-5L-EWY">
                                 <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="separatorColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="separatorColor" red="0.45490196350000001" green="0.45490196350000001" blue="0.45490196350000001" alpha="1" colorSpace="deviceRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LemmaTableCell" textLabel="MXz-mR-NYO" detailTextLabel="7lX-F9-D2l" style="IBUITableViewCellStyleSubtitle" id="EJe-7H-e3z" customClass="OWLLemmaTableCell">
                                         <rect key="frame" x="0.0" y="46" width="320" height="45"/>
@@ -47,7 +47,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MorphTableCell" textLabel="qIn-6u-uGY" detailTextLabel="6yO-gT-YXp" style="IBUITableViewCellStyleValue1" id="DPu-xF-4yo" customClass="OWLMorphDefinitionCell">
-                                        <rect key="frame" x="0.0" y="91" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="91" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -142,6 +142,9 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="uSm-Qc-Gs2">
+                                <color key="color" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C2I-MH-h2c">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <dataDetectorType key="dataDetectorTypes"/>
@@ -152,9 +155,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="uSm-Qc-Gs2" firstAttribute="top" secondItem="z0O-Gh-nhx" secondAttribute="top" constant="233" id="HHr-BA-cf8"/>
                             <constraint firstItem="C2I-MH-h2c" firstAttribute="top" secondItem="z0O-Gh-nhx" secondAttribute="top" type="default" id="UQo-GQ-Hec"/>
+                            <constraint firstItem="uSm-Qc-Gs2" firstAttribute="trailing" secondItem="z0O-Gh-nhx" secondAttribute="trailing" type="default" id="fAX-CY-ftk"/>
                             <constraint firstItem="C2I-MH-h2c" firstAttribute="leading" secondItem="z0O-Gh-nhx" secondAttribute="leading" type="default" id="kY5-ZE-MS6"/>
                             <constraint firstItem="C2I-MH-h2c" firstAttribute="bottom" secondItem="z0O-Gh-nhx" secondAttribute="bottom" type="default" id="lBr-hh-h8N"/>
+                            <constraint firstItem="uSm-Qc-Gs2" firstAttribute="leading" secondItem="z0O-Gh-nhx" secondAttribute="leading" type="default" id="mpV-im-PL3"/>
                             <constraint firstItem="C2I-MH-h2c" firstAttribute="trailing" secondItem="z0O-Gh-nhx" secondAttribute="trailing" type="default" id="yYG-3y-1o1"/>
                         </constraints>
                     </view>
@@ -180,6 +186,7 @@
                     <navigationItem key="navigationItem" id="DEJ-oH-wDu"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="uSm-Qc-Gs2" id="ZiD-qw-Lql"/>
                         <outlet property="webView" destination="C2I-MH-h2c" id="qsn-MI-p7u"/>
                     </connections>
                 </viewController>
@@ -250,6 +257,7 @@
         <class className="OWLDictionaryViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OWLDictionaryViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
         </class>

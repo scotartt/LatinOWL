@@ -27,6 +27,9 @@
         return self;
     }
 
+    -(void)viewDidAppear:(BOOL)animated {
+        [self.activityIndicator stopAnimating];
+    }
 
     - (void)viewDidLoad {
         [super viewDidLoad];
@@ -39,6 +42,7 @@
 
     - (void)viewWillAppear:(BOOL)animated {
         [super viewWillAppear:animated];
+        [self.activityIndicator startAnimating];
         [self.navigationController setNavigationBarHidden:NO animated:animated];
     }
 
