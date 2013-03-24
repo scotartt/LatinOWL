@@ -455,11 +455,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Scot Mcphee";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LatinOnlineWordLookup/LatinOWL-Prefix.pch";
 				INFOPLIST_FILE = "LatinOnlineWordLookup/LatinOWL-Info.plist";
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = LatinOWL;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "924E901D-FE2A-4921-B3B6-20FB132E97F5";
 				"USER_HEADER_SEARCH_PATHS[arch=*]" = /usr/include/libxml2;
 				WRAPPER_EXTENSION = app;
 			};
