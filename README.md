@@ -1,7 +1,7 @@
 LatinOnlineWordLookup (LatinOWL)
 ================================
 
-The Latin Online Word Lookup (LatinOWL) is an iOS app that, by using data from the Perseus Latin Word Tool, allows a user to lookup any Latin word, locate the stem (i.e. nominative noun/adjective or the 1st person singular present active indicative for verbs), and parse the entered form. It gives all possible forms for the word entered. Ultimately, it is planned this tool will also link the stems to the online Lewis & Short dictionary from Perseus, and also from that dictionary, provide links to all the works in the Perseus database that are quoted in the dictionary.
+The Latin Online Word Lookup (LatinOWL) is an iOS app that, by using data from the Perseus Latin Word Tool, allows a user to lookup any Latin word, locate the root (i.e. nominative noun/adjective or the 1st person singular present active indicative for verbs), and parse the entered form. It gives all possible forms for the word entered. This tool also links the roots to the online Lewis & Short dictionary from Perseus, and also from that dictionary, provides links to all the works in the Perseus database that are quoted in the dictionary.
 
 The program is copyright 2013 Scot Mcphee.
 
