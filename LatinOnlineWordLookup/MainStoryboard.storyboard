@@ -17,7 +17,7 @@
                                 <color key="color" red="0.0" green="0.25097998980000003" blue="0.50196099279999995" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Fnc-5L-EWY">
-                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.45490196350000001" green="0.45490196350000001" blue="0.45490196350000001" alpha="1" colorSpace="deviceRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LemmaTableCell" textLabel="MXz-mR-NYO" detailTextLabel="7lX-F9-D2l" style="IBUITableViewCellStyleSubtitle" id="EJe-7H-e3z" customClass="OWLLemmaTableCell">
