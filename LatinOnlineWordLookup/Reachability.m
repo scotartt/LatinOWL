@@ -53,6 +53,7 @@
 
 #define kShouldPrintReachabilityFlags 1
 
+
 static void PrintReachabilityFlags(SCNetworkReachabilityFlags flags, const char *comment) {
 #if kShouldPrintReachabilityFlags
 
@@ -88,6 +89,7 @@ static void PrintReachabilityFlags(SCNetworkReachabilityFlags flags, const char 
             [[NSNotificationCenter defaultCenter] postNotificationName:kReachabilityChangedNotification object:noteObject];
         }
     }
+
 
     - (BOOL)startNotifier {
         BOOL retVal = NO;

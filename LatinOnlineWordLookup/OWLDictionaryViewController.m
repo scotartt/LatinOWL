@@ -8,6 +8,7 @@
 
 #import "OWLDictionaryViewController.h"
 
+
 @interface OWLDictionaryViewController ()
 
 @end
@@ -15,8 +16,8 @@
 
 @implementation OWLDictionaryViewController
 
-@synthesize webView;
-@synthesize theURL;
+    @synthesize webView;
+    @synthesize theURL;
 
 
     - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -27,9 +28,11 @@
         return self;
     }
 
-    -(void)viewDidAppear:(BOOL)animated {
+
+    - (void)viewDidAppear:(BOOL)animated {
         [self.activityIndicator stopAnimating];
     }
+
 
     - (void)viewDidLoad {
         [super viewDidLoad];

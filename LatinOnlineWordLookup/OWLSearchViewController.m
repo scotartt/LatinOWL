@@ -12,6 +12,7 @@
 #import "OWLDictionaryViewController.h"
 #import "OWLInfoViewController.h"
 
+
 @interface OWLSearchViewController ()
 
     @property OWLMorphData *latinMorphData;
@@ -132,7 +133,6 @@
 
     - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
         NSLog(@"called numberOfRowsInSection:%d", section);
-        // Number of rows is the number of time zones in the region for the specified section.
         NSString *lemmaId = [[[self latinMorphData] lemmas] objectAtIndex:(NSUInteger) section];
         NSDictionary *definitions = [[self latinMorphData] definitions];
         if (definitions != nil) {

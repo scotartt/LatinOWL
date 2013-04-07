@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface OWLLemmaTableCell : UITableViewCell
     @property(weak, nonatomic) IBOutlet UILabel *lemmaTitle;
     @property(weak, nonatomic) IBOutlet UILabel *lemmaMeaning;

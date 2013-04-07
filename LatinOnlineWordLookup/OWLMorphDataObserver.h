@@ -8,9 +8,9 @@
 
 
 @protocol OWLMorphDataObserver <NSObject>
-  - (void)refreshViewData:(OWLMorphData *)latinMorph;
+    - (void)refreshViewData:(OWLMorphData *)latinMorph;
 
-  - (void)showError:(NSError *)error forConnection:(NSURLConnection *)connection;
+    - (void)showError:(NSError *)error forConnection:(NSURLConnection *)connection;
 
-  - (void)showError:(NSException *)exception forSearchTerm:(NSString *)searchTerm;
+    - (void)showError:(NSException *)exception forSearchTerm:(NSString *)searchTerm;
 @end

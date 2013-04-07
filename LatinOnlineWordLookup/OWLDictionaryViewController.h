@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface OWLDictionaryViewController : UIViewController <UIWebViewDelegate, NSURLConnectionDelegate>
 
     @property(strong, nonatomic) IBOutlet UIWebView *webView;
     @property(strong, nonatomic) NSString *theURL;
-    @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+    @property(strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end

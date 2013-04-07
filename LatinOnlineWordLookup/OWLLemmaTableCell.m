@@ -8,6 +8,7 @@
 
 #import "OWLLemmaTableCell.h"
 
+
 @implementation OWLLemmaTableCell
 
     - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
